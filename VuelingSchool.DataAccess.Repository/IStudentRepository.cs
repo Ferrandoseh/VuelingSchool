@@ -11,6 +11,6 @@ namespace VuelingSchool.DataAccess.Repository
     {
         Student AddNewStudent(string studentId, string name, string surname, string birthday);
         List<Student> GetAllStudents();
-        string GetStudentByName(int studentId);
+        string GetStudentNameById(int studentId);
     }
 }

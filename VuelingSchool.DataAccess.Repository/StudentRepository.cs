@@ -32,7 +32,7 @@ namespace VuelingSchool.DataAccess.Repository
             return studentsList;
         }
         
-        public string GetStudentByName(int studentId)
+        public string GetStudentNameById(int studentId)
         {
             throw new NotImplementedException();
         }

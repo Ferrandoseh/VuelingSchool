@@ -24,8 +24,7 @@ namespace VuelingSchool.DataAccess.Repository.Tests
                 Surname, Birthday);
             List<Student> studentList = iStudentRepository.GetAllStudents();
             lastStudent = studentList[studentList.Count-1];
-            Assert.Equals(studentAdded.ToString(), lastStudent.ToString());
-            //TODO: Attempts to write and read the file from a wrong path.
+            Assert.AreEqual(studentAdded.ToString(), lastStudent.ToString());
         }
     }
 }

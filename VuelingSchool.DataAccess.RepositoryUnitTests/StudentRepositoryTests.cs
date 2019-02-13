@@ -18,13 +18,20 @@ namespace VuelingSchool.DataAccess.Repository.Tests
         public void SetUp()
         {
             var mock = new Mock<IStudentRepository>();
-            mock.Setup(x => x.GetStudentByName(1)).Returns("Ferran");
-            mock.Setup(x => x.GetStudentByName(2)).Returns("Marti");
+            mock.Setup(x => x.GetStudentNameById(1)).Returns("Ferran");
+            mock.Setup(x => x.GetStudentNameById(2)).Returns("Marti");
             mockObject = mock.Object;
         }
 
         [TestMethod()]
         public void GetStudentByNameTest()
+        {
+            var result = mockObject.GetStudentByName(1);
+            Assert.AreEqual("Ferran", result);
+        }
+
+        [TestMethod()]
+        public void GetStudentNameByIdTest()
         {
             var result = mockObject.GetStudentByName(1);
             Assert.AreEqual("Ferran", result);

@@ -12,21 +12,38 @@ namespace VuelingSchool.Common.Library.Utils
     {
         public static void Add(Student s)
         {
-            using (StreamWriter w = File.AppendText("student.txt"))
+            try
             {
-                w.WriteLine(s.ToString());
+                using (StreamWriter w = File.AppendText("C:/Users/ferra/source/repos/VuelingSchool/student.txt"))
+                {
+                    w.WriteLine(s.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(String.Format("An error ocurred while trying to add data: {0}", e.Message), e);
             }
         }
         public static List<string> Get()
         {
             List<string> lines = new List<string>();
             string line = "";
-            using (StreamReader sr = new StreamReader("student.txt"))
-            {
-                while ((line = sr.ReadLine()) != null)
+            try {
+                using (StreamReader sr = new StreamReader("C:/Users/ferra/source/repos/VuelingSchool/student.txt"))
                 {
-                    lines.Add(line);
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        lines.Add(line);
+                    }
                 }
+            }
+            catch (FileNotFoundException e)
+            {
+                throw new FileNotFoundException(e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(String.Format("An error ocurred while trying to get data: {0}", e.Message), e);
             }
             return lines;
         }
