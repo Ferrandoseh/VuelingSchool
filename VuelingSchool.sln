@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonTier", "CommonTier", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingSchool.DataAccess.RepositoryUnitTests", "VuelingSchool.DataAccess.RepositoryUnitTests\VuelingSchool.DataAccess.RepositoryUnitTests.csproj", "{F3BE7B2A-0C0F-4C64-8D6C-91981973B7D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingSchool.DataAccess.Repository.NUnit.IntegrationTests", "VuelingSchool.DataAccess.Repository.NUnit.IntegrationTests\VuelingSchool.DataAccess.Repository.NUnit.IntegrationTests.csproj", "{23767CB9-7E5C-48A7-BBAF-0DCEB8AF02E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F3BE7B2A-0C0F-4C64-8D6C-91981973B7D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3BE7B2A-0C0F-4C64-8D6C-91981973B7D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3BE7B2A-0C0F-4C64-8D6C-91981973B7D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23767CB9-7E5C-48A7-BBAF-0DCEB8AF02E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23767CB9-7E5C-48A7-BBAF-0DCEB8AF02E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23767CB9-7E5C-48A7-BBAF-0DCEB8AF02E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23767CB9-7E5C-48A7-BBAF-0DCEB8AF02E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{A692DE06-357A-4AB2-9448-A56250ECFEBB} = {6F66AD33-73BB-47BC-B94A-AC92B068C8D8}
 		{0FB8582B-D95B-4D73-98EB-9AC93A98761D} = {1551C992-3FA7-44EA-81B1-5D9476F1B41F}
 		{F3BE7B2A-0C0F-4C64-8D6C-91981973B7D6} = {6F66AD33-73BB-47BC-B94A-AC92B068C8D8}
+		{23767CB9-7E5C-48A7-BBAF-0DCEB8AF02E7} = {6F66AD33-73BB-47BC-B94A-AC92B068C8D8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D66759B-7693-49D4-94C9-5DF59989AD9E}

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VuelingSchool.Common.Library.Models;
 using VuelingSchool.Common.Library.Utils;
 
@@ -16,14 +13,15 @@ namespace VuelingSchool.DataAccess.Repository
         {
         }
 
-        public void AddNewStudent(string studentId, string name, string surname, string birthday)
+        public Student AddNewStudent(string studentId, string name, string surname, string birthday)
         {
             Student student = new Student(studentId, name, surname, birthday);
             studentsList.Add(student);
             FileManager.Add(student);
+            return student;
         }
 
-        public String GetAllStudents()
+        public List<Student> GetAllStudents()
         {
             List<string> lines = FileManager.Get();
             int numLines = lines.Count;
@@ -31,19 +29,9 @@ namespace VuelingSchool.DataAccess.Repository
             {
                 studentsList.Add(Student.LineToStudent(lines[i]));
             }
-            return StudentListToString( ref studentsList );
+            return studentsList;
         }
-
-        private string StudentListToString(ref List<Student> studentsList)
-        {
-            string result = "";
-            for(int i = 0; i< studentsList.Count; i++)
-            {
-                result = String.Concat(result, studentsList[i].ToString(), "\n");
-            }
-            return result;
-        }
-
+        
         public string GetStudentByName(int studentId)
         {
             throw new NotImplementedException();

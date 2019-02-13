@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using VuelingSchool.Common.Library.Models;
 using VuelingSchool.DataAccess.Repository;
 
 namespace VuelingSchool.Presentation.Console
@@ -33,9 +35,19 @@ namespace VuelingSchool.Presentation.Console
         }
         private static void ShowStudents(StudentRepository sr)
         {
-            System.Console.Write( sr.GetAllStudents() );
+            StudentListToString( sr.GetAllStudents() );
         }
 
+        private static void StudentListToString(List<Student> studentsList)
+        {
+            string result = "";
+            for (int i = 0; i < studentsList.Count; i++)
+            {
+                result = String.Concat(result, studentsList[i].ToString(), "\n");
+            }
+            System.Console.WriteLine(result);
+        }
+        
         private static void GetStudentParams(StudentRepository sr)
         {
             string StudentId, Name, Surname, Birthday;

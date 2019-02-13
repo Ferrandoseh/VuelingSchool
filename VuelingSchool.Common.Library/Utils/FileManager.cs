@@ -25,7 +25,6 @@ namespace VuelingSchool.Common.Library.Utils
             {
                 while ((line = sr.ReadLine()) != null)
                 {
-                    Console.WriteLine(line);
                     lines.Add(line);
                 }
             }
