@@ -19,10 +19,9 @@ namespace VuelingSchool.Presentation.Console
                 System.Console.WriteLine("\t 1. Add new student");
                 System.Console.WriteLine("\t 2. Show all students");
                 System.Console.WriteLine("\t 3. Exit");
-                
                 optionSelected = System.Console.ReadLine();
                 System.Console.WriteLine("You entered '{0}'", optionSelected);
-
+                
                 StudentRepository sr = new StudentRepository();
                 if (optionSelected.Equals("1"))
                     GetStudentParams(sr);
