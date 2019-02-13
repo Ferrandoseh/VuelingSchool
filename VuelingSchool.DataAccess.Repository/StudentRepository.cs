@@ -20,16 +20,31 @@ namespace VuelingSchool.DataAccess.Repository
         {
             Student student = new Student(studentId, name, surname, birthday);
             studentsList.Add(student);
-
-            FileManager.Write(student);
+            FileManager.Add(student);
         }
-        public String GetLastStudentId()
+
+        public String GetAllStudents()
         {
-            Student lastStudent = studentsList[studentsList.Count - 1];
-            return lastStudent.StudentId;
+            List<string> lines = FileManager.Get();
+            int numLines = lines.Count;
+            for (int i = 0; i < numLines; i++)
+            {
+                studentsList.Add(Student.LineToStudent(lines[i]));
+            }
+            return StudentListToString( ref studentsList );
         }
 
-        public string GetStudentName(int studentId)
+        private string StudentListToString(ref List<Student> studentsList)
+        {
+            string result = "";
+            for(int i = 0; i< studentsList.Count; i++)
+            {
+                result = String.Concat(result, studentsList[i].ToString(), "\n");
+            }
+            return result;
+        }
+
+        public string GetStudentByName(int studentId)
         {
             throw new NotImplementedException();
         }

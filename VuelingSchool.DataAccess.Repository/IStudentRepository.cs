@@ -9,7 +9,7 @@ namespace VuelingSchool.DataAccess.Repository
     public interface IStudentRepository
     {
         void AddNewStudent(string studentId, string name, string surname, string birthday);
-        string GetLastStudentId();
-        string GetStudentName(int studentId);
+        string GetAllStudents();
+        string GetStudentByName(int studentId);
     }
 }

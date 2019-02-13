@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VuelingSchool.DataAccess.Repository;
 
 namespace VuelingSchool.Presentation.Console
@@ -17,22 +12,32 @@ namespace VuelingSchool.Presentation.Console
         
         public static void SelectOption()
         {
-            int optionSelected;
+            string optionSelected = null;
             while (true)
             {
-                System.Console.Clear();
-                System.Console.WriteLine("Acciones a realizar:");
+                System.Console.WriteLine("\n\nAcciones a realizar:");
                 System.Console.WriteLine("\t 1. Add new student");
-                System.Console.WriteLine("\t 2. Exit");
-                optionSelected = Convert.ToInt32(System.Console.ReadLine());
+                System.Console.WriteLine("\t 2. Show all students");
+                System.Console.WriteLine("\t 3. Exit");
+                
+                optionSelected = System.Console.ReadLine();
                 System.Console.WriteLine("You entered '{0}'", optionSelected);
-                if (optionSelected == 1)
-                    GetStudentParams();
+
+                StudentRepository sr = new StudentRepository();
+                if (optionSelected.Equals("1"))
+                    GetStudentParams(sr);
+                else if (optionSelected.Equals("2"))
+                    ShowStudents(sr);
                 else
                     Environment.Exit(0);
             }
         }
-        private static void GetStudentParams()
+        private static void ShowStudents(StudentRepository sr)
+        {
+            System.Console.Write( sr.GetAllStudents() );
+        }
+
+        private static void GetStudentParams(StudentRepository sr)
         {
             string StudentId, Name, Surname, Birthday;
             System.Console.WriteLine("\nADD NEW STUDENT");
@@ -45,7 +50,6 @@ namespace VuelingSchool.Presentation.Console
             System.Console.Write("\tType the birth date (dd/mm/yyyy): ");
             Birthday = System.Console.ReadLine();
 
-            StudentRepository sr = new StudentRepository();
             sr.AddNewStudent(StudentId, Name, Surname, Birthday);
         }
     }
