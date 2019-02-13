@@ -23,5 +23,15 @@ namespace VuelingSchool.DataAccess.Repository
 
             FileManager.Write(student);
         }
+        public String GetLastStudentId()
+        {
+            Student lastStudent = studentsList[studentsList.Count - 1];
+            return lastStudent.StudentId;
+        }
+
+        public string GetStudentName(int studentId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

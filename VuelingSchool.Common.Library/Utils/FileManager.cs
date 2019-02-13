@@ -10,13 +10,12 @@ namespace VuelingSchool.Common.Library.Utils
 {
     public static class FileManager
     {
-        public static bool Write(Student s)
+        public static void Write(Student s)
         {
             using (StreamWriter w = File.AppendText("student.txt"))
             {
-                w.WriteLine( s.get() );
+                w.WriteLine( s.ToString() );
             }
-            return true;
         }
     }    
 }

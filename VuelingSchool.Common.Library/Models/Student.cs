@@ -9,10 +9,10 @@ namespace VuelingSchool.Common.Library.Models
     public class Student
     {
         private readonly Guid SGuid;
-        private readonly string StudentId;
-        private readonly string Name;
-        private readonly string Surname;
-        private readonly string Birthday;
+        public readonly string StudentId;
+        private string Name { get; set; }
+        private string Surname { get; set; }
+        private string Birthday { get; set; }
 
         public Student (string StudentId, string Name, string Surname, string Birthday)
         {
@@ -22,8 +22,7 @@ namespace VuelingSchool.Common.Library.Models
             this.Surname = Surname;
             this.Birthday = Birthday;
         }
-
-        public string get()
+        public override string ToString()
         {
             return String.Concat(SGuid.ToString(), ", ", StudentId, ", ", Name, ", ", Surname, ", ", Birthday);
         }
