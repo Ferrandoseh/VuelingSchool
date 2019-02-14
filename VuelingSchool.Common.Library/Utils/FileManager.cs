@@ -13,19 +13,11 @@ namespace VuelingSchool.Common.Library.Utils
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static Student Add(Student student)
-        {         
-            try
+        {       
+            using (StreamWriter w = File.AppendText(localPath))
             {
-                using (StreamWriter w = File.AppendText(localPath))
-                {
-                    w.WriteLine( student.ToString() );
-                }
+                w.WriteLine( student.ToString() );
             }
-            catch (Exception e)
-            {
-                log.Error(e.Message);
-            }
-            
             return GetLastStudent();
         }
         private static Student GetLastStudent()
@@ -50,11 +42,7 @@ namespace VuelingSchool.Common.Library.Utils
             catch (FileNotFoundException e)
             {
                 log.Error(e.Message);
-                throw new FileNotFoundException(e.Message);
-            }
-            catch (Exception e)
-            {
-                log.Error(e.Message);
+                throw;
             }
             return students;
         }
@@ -69,7 +57,7 @@ namespace VuelingSchool.Common.Library.Utils
             catch (NotImplementedException e)
             {
                 log.Error(e);
-                throw new NotImplementedException(e.Message);
+                throw;
             }
         }
     }    
