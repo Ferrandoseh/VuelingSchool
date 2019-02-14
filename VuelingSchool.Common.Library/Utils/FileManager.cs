@@ -50,6 +50,7 @@ namespace VuelingSchool.Common.Library.Utils
             catch (FileNotFoundException e)
             {
                 log.Error(e.Message);
+                throw new FileNotFoundException(e.Message);
             }
             catch (Exception e)
             {
@@ -68,6 +69,7 @@ namespace VuelingSchool.Common.Library.Utils
             catch (NotImplementedException e)
             {
                 log.Error(e);
+                throw new NotImplementedException(e.Message);
             }
         }
     }    
