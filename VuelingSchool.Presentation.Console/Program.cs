@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using VuelingSchool.Common.Library.Models;
+using VuelingSchool.Common.Library.Utils;
 using VuelingSchool.DataAccess.Repository;
 
 namespace VuelingSchool.Presentation.Console
@@ -20,8 +20,10 @@ namespace VuelingSchool.Presentation.Console
             {
                 System.Console.WriteLine("\n\nAcciones a realizar:");
                 System.Console.WriteLine("\t 1. Add new student");
+
                 System.Console.WriteLine("\t 2. Show all students");
                 System.Console.WriteLine("\t 3. Get student by id");
+                System.Console.WriteLine("\t 4. Throw an exception");
                 System.Console.WriteLine("\t . Exit");
                 caseSwitch = System.Console.ReadLine();
                 System.Console.WriteLine("You entered '{0}'", caseSwitch);
@@ -39,39 +41,16 @@ namespace VuelingSchool.Presentation.Console
                     case "3":
                         ShowStudent(sr);
                         break;
+                    case "4":
+                        ThrowException();
+                        break;
                     default:
                         Environment.Exit(0);
                         break;
                 }                    
             }
         }
-        private static void ShowStudents(StudentRepository sr)
-        {
-            StudentListToString(sr.GetAllStudents());
-        }
 
-        private static void ShowStudent(StudentRepository sr)
-        {
-            string studentId;
-            System.Console.Write("\t Enter Student Id: ");
-            studentId = System.Console.ReadLine();
-            Student student = sr.GetStudentById(studentId);
-            if(student == null)
-                System.Console.WriteLine("There's not any Student with such StudentId");
-            else
-                System.Console.WriteLine(student.ToString());
-        }
-
-        private static void StudentListToString(List<Student> studentsList)
-        {
-            string result = "";
-            for (int i = 0; i < studentsList.Count; i++)
-            {
-                result = String.Concat(result, studentsList[i].ToString(), "\n");
-            }
-            System.Console.WriteLine(result);
-        }
-        
         private static void GetStudentParams(StudentRepository sr)
         {
             string StudentId, Name, Surname, Birthday;
@@ -87,6 +66,35 @@ namespace VuelingSchool.Presentation.Console
 
             Student student = new Student(StudentId, Name, Surname, Birthday);
             sr.AddNewStudent(student);
+        }
+        private static void ShowStudents(StudentRepository sr)
+        {
+            StudentListToString(sr.GetAllStudents());
+        }
+        private static void ShowStudent(StudentRepository sr)
+        {
+            string studentId;
+            System.Console.Write("\t Enter Student Id: ");
+            studentId = System.Console.ReadLine();
+            Student student = sr.GetStudentById(studentId);
+            if (student == null)
+                System.Console.WriteLine("There's not any Student with such StudentId");
+            else
+                System.Console.WriteLine(student.ToString());
+        }
+        private static void ThrowException()
+        {
+            FileManager.ThrowException();
+        }
+
+        private static void StudentListToString(List<Student> studentsList)
+        {
+            string result = "";
+            for (int i = 0; i < studentsList.Count; i++)
+            {
+                result = String.Concat(result, studentsList[i].ToString(), "\n");
+            }
+            System.Console.WriteLine(result);
         }
     }
 }
