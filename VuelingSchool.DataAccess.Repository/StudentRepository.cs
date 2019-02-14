@@ -7,16 +7,13 @@ namespace VuelingSchool.DataAccess.Repository
 {
     public class StudentRepository : IStudentRepository
     {
-        private List<Student> studentList { get; }
         
         public StudentRepository()
         {
-            studentList = GetAllStudents();
         }
 
         public Student AddNewStudent(Student student)
         {
-            studentList.Add(student);
             return FileManager.Add(student);
         }
 
@@ -29,6 +26,7 @@ namespace VuelingSchool.DataAccess.Repository
         {
             Student student = null;
             bool found = false;
+            List<Student> studentList = GetAllStudents();
             int count = studentList.Count;
             for(int i = 0; i < count && !found; i++)
             {

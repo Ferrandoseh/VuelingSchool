@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VuelingSchool.Common.Library.Models;
 
 namespace VuelingSchool.Common.Library.Utils
 {
     public static class FileManager
     {
-        private static string localPath = ConfigurationSettings.AppSettings["localPath"];
+        private static readonly string localPath = ConfigurationManager.AppSettings["localPath"];
+        
         public static Student Add(Student student)
         {            
             using (StreamWriter w = File.AppendText(localPath))
