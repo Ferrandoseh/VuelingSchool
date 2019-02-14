@@ -12,43 +12,44 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
         private readonly StudentRepository studentRepository = new StudentRepository();
         Student prevStudent = null, addedStudent = null;
         String studentId, name, surname, birthDay;
-        [Given(@"I have entered ""(.*)"" as StudentId<s")]
-        public void GivenIHaveEnteredAsStudentIdS(string p0)
-        {
-            studentId = p0;
-        }
 
-        [Given(@"I have entered ""(.*)"" as Name")]
-        public void GivenIHaveEnteredAsName(string p0)
+        [Given(@"there is a new student")]
+        public void GivenThereIsANewStudent()
         {
-            name = p0;
+            prevStudent = new Student();
         }
-
-        [Given(@"I have entered ""(.*)"" as Surname")]
-        public void GivenIHaveEnteredAsSurname(string p0)
+        
+        [Given(@"I have entered (.*) as the ID")]
+        public void GivenIHaveEnteredAsTheID(string p0)
         {
-            surname = p0;
+            prevStudent.StudentId = p0;
         }
-
-        [Given(@"I have entered ""(.*)"" as BirthDay")]
-        public void GivenIHaveEnteredAsBirthDay(string p0)
+        
+        [Given(@"I have entered (.*) as a name")]
+        public void GivenIHaveEnteredAsAName(string p0)
         {
-            birthDay = p0;
+            prevStudent.Name = p0;
         }
-
-        [Given(@"I have created a Student with those data")]
-        public void GivenIHaveCreatedAStudentWithThoseData()
+        
+        [Given(@"I have entered (.*) as a surname")]
+        public void GivenIHaveEnteredAsASurname(string p0)
         {
-            prevStudent = new Student("1", "1", "1", "1");
+            prevStudent.Surname = p0;
         }
-
-        [When(@"I have added this Student into a file")]
-        public void GivenIHaveAddedThisStudentIntoAFile()
+        
+        [Given(@"I have entered (.*) as a date of birth")]
+        public void GivenIHaveEnteredAsADateOfBirth(string p0)
+        {
+            prevStudent.Birthday = p0;
+        }
+        
+        [When(@"I add this student into a file")]
+        public void WhenIAddThisStudentIntoAFile()
         {
             addedStudent = studentRepository.AddNewStudent(prevStudent);
         }
-
-        [Then(@"The Student got is the same as the Student added previously")]
+        
+        [Then(@"The student got is the same as the student added previously")]
         public void ThenTheStudentGotIsTheSameAsTheStudentAddedPreviously()
         {
             Assert.AreEqual(prevStudent, addedStudent);

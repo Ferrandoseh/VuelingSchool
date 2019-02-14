@@ -1,12 +1,19 @@
 ﻿Feature: StudentRepository
-	I want to store Students properly
-	Add a new Student and check is readable later
+	I want to store students properly
+	Add a new Student and validate is readable later
 
-Scenario: Add new Student in a file text
-	Given I have entered "2222" as StudentId<s
-	And I have entered "Melvin" as Name
-	And I have entered "BDDTest" as Surname
-	And I have entered "14/02/2000" as BirthDay
-	And I have created a Student with those data
-	When I have added this Student into a file
-	Then The Student got is the same as the Student added previously
+Scenario Outline: Add new Student in a file text
+	Given there is a new student
+	And I have entered <studentId> as the ID
+	And I have entered <name> as a name
+	And I have entered <surname> as a surname
+	And I have entered <birthDay> as a date of birth
+	When I add this student into a file
+	Then The student got is the same as the student added previously
+	
+	Examples:
+    | studentId | name    | surname   | birthDay     |
+    | "0001"    | "Marco" | "Polo"    | "01/01/2001" |
+    | "0002"    | "Ana"   | "Banana"  | "01/01/2001" |
+    | "0003"    | "Poco"  | "Yo"      | "01/01/2001" |
+    | "0004"    | "Homer" | "Simpson" | "01/01/2001" |
