@@ -7,34 +7,39 @@ namespace VuelingSchool.DataAccess.Repository
 {
     public class StudentRepository : IStudentRepository
     {
-        List<Student> studentsList = new List<Student>();
-
+        private List<Student> studentList { get; }
+        
         public StudentRepository()
         {
+            studentList = GetAllStudents();
         }
 
-        public Student AddNewStudent(string studentId, string name, string surname, string birthday)
+        public Student AddNewStudent(Student student)
         {
-            Student student = new Student(studentId, name, surname, birthday);
-            studentsList.Add(student);
-            FileManager.Add(student);
-            return student;
+            studentList.Add(student);
+            return FileManager.Add(student);
         }
 
         public List<Student> GetAllStudents()
         {
-            List<string> lines = FileManager.Get();
-            int numLines = lines.Count;
-            for (int i = 0; i < numLines; i++)
-            {
-                studentsList.Add(Student.LineToStudent(lines[i]));
-            }
-            return studentsList;
+            return FileManager.Get();
         }
-        
-        public string GetStudentNameById(int studentId)
+
+        public Student GetStudentById(string studentId)
         {
-            throw new NotImplementedException();
+            Student student = null;
+            bool found = false;
+            int count = studentList.Count;
+            for(int i = 0; i < count && !found; i++)
+            {
+                Student s = studentList[i];
+                if( studentId.Equals(s.StudentId) )
+                {
+                    found = true;
+                    student = s;
+                }
+            }
+            return student;
         }
     }
 }

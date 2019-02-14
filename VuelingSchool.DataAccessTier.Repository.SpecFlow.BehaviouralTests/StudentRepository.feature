@@ -1,13 +1,12 @@
 ﻿Feature: StudentRepository
-	I want to store Students
-	Add a new Student and check the data written in the file has the right name
+	I want to store Students properly
+	Add a new Student and check is readable later
 
-@mytag
 Scenario: Add new Student in a file text
-	Given I have entered "999" as StudentId
-	And I have entered "Ferran" as Name
-	And I have entered "Ramirez" as Surname
-	And I have entered "30/12/1993" as BirthDay
-	And I have created an written in a file a new object Student with these data
-	When I press enter
-	Then the string writen in the text should be the same as the last line read from this one
+	Given I have entered "2222" as StudentId<s
+	And I have entered "Melvin" as Name
+	And I have entered "BDDTest" as Surname
+	And I have entered "14/02/2000" as BirthDay
+	And I have created a Student with those data
+	When I have added this Student into a file
+	Then The Student got is the same as the Student added previously

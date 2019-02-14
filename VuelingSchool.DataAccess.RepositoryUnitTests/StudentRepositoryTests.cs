@@ -1,11 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using VuelingSchool.DataAccess.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using VuelingSchool.Common.Library.Models;
 
 namespace VuelingSchool.DataAccess.Repository.Tests
 {
@@ -13,28 +8,22 @@ namespace VuelingSchool.DataAccess.Repository.Tests
     public class StudentRepositoryTests
     {
         private IStudentRepository mockObject;
+        Student student;
 
         [TestInitialize()]
         public void SetUp()
         {
+            student = new Student("12345678", "Unit", "Test", "23/07/1996");
+
             var mock = new Mock<IStudentRepository>();
-            mock.Setup(x => x.GetStudentNameById(1)).Returns("Ferran");
-            mock.Setup(x => x.GetStudentNameById(2)).Returns("Marti");
+            mock.Setup(x => x.AddNewStudent(student)).Returns(student);
             mockObject = mock.Object;
         }
 
         [TestMethod()]
-        public void GetStudentByNameTest()
+        public void AddNewStudentTest()
         {
-            var result = mockObject.GetStudentNameById(1);
-            Assert.AreEqual("Ferran", result);
-        }
-
-        [TestMethod()]
-        public void GetStudentNameByIdTest()
-        {
-            var result = mockObject.GetStudentNameById(1);
-            Assert.AreEqual("Ferran", result);
+            Assert.AreEqual(student, mockObject.AddNewStudent(student));
         }
     }
 }

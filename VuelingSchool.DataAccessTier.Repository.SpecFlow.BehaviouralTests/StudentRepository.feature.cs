@@ -17,8 +17,8 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("StudentRepository", Description="\tI want to store Students\r\n\tAdd a new Student and check the data written in the f" +
-        "ile has the right name", SourceFile="StudentRepository.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("StudentRepository", Description="\tI want to store Students properly\r\n\tAdd a new Student and check is readable late" +
+        "r", SourceFile="StudentRepository.feature", SourceLine=0)]
     public partial class StudentRepositoryFeature
     {
         
@@ -31,8 +31,8 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "StudentRepository", "\tI want to store Students\r\n\tAdd a new Student and check the data written in the f" +
-                    "ile has the right name", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "StudentRepository", "\tI want to store Students properly\r\n\tAdd a new Student and check is readable late" +
+                    "r", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -68,30 +68,27 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add new Student in a file text", new string[] {
-                "mytag"}, SourceLine=5)]
+        [TechTalk.SpecRun.ScenarioAttribute("Add new Student in a file text", SourceLine=4)]
         public virtual void AddNewStudentInAFileText()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add new Student in a file text", null, new string[] {
-                        "mytag"});
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add new Student in a file text", null, ((string[])(null)));
+#line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
+#line 6
+ testRunner.Given("I have entered \"2222\" as StudentId<s", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
- testRunner.Given("I have entered \"999\" as StudentId", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.And("I have entered \"Melvin\" as Name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8
- testRunner.And("I have entered \"Ferran\" as Name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have entered \"BDDTest\" as Surname", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.And("I have entered \"Ramirez\" as Surname", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have entered \"14/02/2000\" as BirthDay", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
- testRunner.And("I have entered \"30/12/1993\" as BirthDay", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I have created a Student with those data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.And("I have created an written in a file a new object Student with these data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I have added this Student into a file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.When("I press enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 13
- testRunner.Then("the string writen in the text should be the same as the last line read from this " +
-                    "one", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The Student got is the same as the Student added previously", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

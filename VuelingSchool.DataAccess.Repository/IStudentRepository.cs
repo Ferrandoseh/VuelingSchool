@@ -9,8 +9,8 @@ namespace VuelingSchool.DataAccess.Repository
 {
     public interface IStudentRepository
     {
-        Student AddNewStudent(string studentId, string name, string surname, string birthday);
+        Student AddNewStudent(Student student);
         List<Student> GetAllStudents();
-        string GetStudentNameById(int studentId);
+        Student GetStudentById(string studentId);
     }
 }

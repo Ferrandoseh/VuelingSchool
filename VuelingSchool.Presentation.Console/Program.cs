@@ -6,7 +6,7 @@ using VuelingSchool.DataAccess.Repository;
 
 namespace VuelingSchool.Presentation.Console
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
@@ -15,28 +15,51 @@ namespace VuelingSchool.Presentation.Console
         
         public static void SelectOption()
         {
-            string optionSelected = null;
+            string caseSwitch = null;
             while (true)
             {
                 System.Console.WriteLine("\n\nAcciones a realizar:");
                 System.Console.WriteLine("\t 1. Add new student");
                 System.Console.WriteLine("\t 2. Show all students");
-                System.Console.WriteLine("\t 3. Exit");
-                optionSelected = System.Console.ReadLine();
-                System.Console.WriteLine("You entered '{0}'", optionSelected);
+                System.Console.WriteLine("\t 3. Get student by id");
+                System.Console.WriteLine("\t . Exit");
+                caseSwitch = System.Console.ReadLine();
+                System.Console.WriteLine("You entered '{0}'", caseSwitch);
                 
                 StudentRepository sr = new StudentRepository();
-                if (optionSelected.Equals("1"))
-                    GetStudentParams(sr);
-                else if (optionSelected.Equals("2"))
-                    ShowStudents(sr);
-                else
-                    Environment.Exit(0);
+                
+                switch (caseSwitch)
+                {
+                    case "1":
+                        GetStudentParams(sr);
+                        break;
+                    case "2":
+                        ShowStudents(sr);
+                        break;
+                    case "3":
+                        ShowStudent(sr);
+                        break;
+                    default:
+                        Environment.Exit(0);
+                        break;
+                }                    
             }
         }
         private static void ShowStudents(StudentRepository sr)
         {
-            StudentListToString( sr.GetAllStudents() );
+            StudentListToString(sr.GetAllStudents());
+        }
+
+        private static void ShowStudent(StudentRepository sr)
+        {
+            string studentId;
+            System.Console.Write("\t Enter Student Id: ");
+            studentId = System.Console.ReadLine();
+            Student student = sr.GetStudentById(studentId);
+            if(student == null)
+                System.Console.WriteLine("There's not any Student with such StudentId");
+            else
+                System.Console.WriteLine(student.ToString());
         }
 
         private static void StudentListToString(List<Student> studentsList)
@@ -62,7 +85,8 @@ namespace VuelingSchool.Presentation.Console
             System.Console.Write("\tType the birth date (dd/mm/yyyy): ");
             Birthday = System.Console.ReadLine();
 
-            sr.AddNewStudent(StudentId, Name, Surname, Birthday);
+            Student student = new Student(StudentId, Name, Surname, Birthday);
+            sr.AddNewStudent(student);
         }
     }
 }

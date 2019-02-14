@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,58 +11,40 @@ namespace VuelingSchool.Common.Library.Utils
 {
     public static class FileManager
     {
-        public static void Add(Student s)
+        private static string localPath = ConfigurationSettings.AppSettings["localPath"];
+        public static Student Add(Student student)
+        {            
+            using (StreamWriter w = File.AppendText(localPath))
+            {
+                w.WriteLine( student.ToString() );
+            }
+            return GetLastStudent();
+        }
+        private static Student GetLastStudent()
         {
+            List<Student> lines =  Get();
+            return lines[lines.Count - 1];
+        }
+        public static List<Student> Get()
+        {
+            List<Student> students = new List<Student>();
+            string line = "";
             try
             {
-                using (StreamWriter w = File.AppendText("C:/Users/ferra/source/repos/VuelingSchool/student.txt"))
-                {
-                    w.WriteLine(s.ToString());
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception(String.Format("An error ocurred while trying to add data: {0}", e.Message), e);
-            }
-        }
-        public static List<string> Get()
-        {
-            List<string> lines = new List<string>();
-            string line = "";
-            try {
-                using (StreamReader sr = new StreamReader("C:/Users/ferra/source/repos/VuelingSchool/student.txt"))
+                using (StreamReader sr = new StreamReader(localPath))
                 {
                     while ((line = sr.ReadLine()) != null)
                     {
-                        lines.Add(line);
+                        students.Add( Student.LineToStudent(line) );
                     }
                 }
             }
             catch (FileNotFoundException e)
             {
-                throw new FileNotFoundException(e.Message);
+                System.Console.Write(e.Message);
+                System.Console.Read();
             }
-            catch (Exception e)
-            {
-                throw new Exception(String.Format("An error ocurred while trying to get data: {0}", e.Message), e);
-            }
-            return lines;
-        }
-        public static string GetUntilOrEmpty(ref string line)
-        {
-            string text = line;
-            if (!String.IsNullOrWhiteSpace(text))
-            { 
-                int charLocation = text.IndexOf(", ", StringComparison.Ordinal);
-
-                if (charLocation > 0)
-                {
-                    line = text.Substring(charLocation+2, text.Length - (charLocation+2));
-                    return text.Substring(0, charLocation);
-                }
-            }
-
-            return String.Empty;
+            return students;
         }
     }    
 }

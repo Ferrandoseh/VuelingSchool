@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TestProfile xmlns="http://www.specflow.org/schemas/plus/TestProfile/1.5">
-  <Settings projectName="VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests" projectId="{897b7f43-82f7-4126-b812-43313306603e}" />
+  <Settings projectName="VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests" projectId="{b7efcab9-3627-4620-add4-969331388625}" />
   <Execution stopAfterFailures="3" testThreadCount="1" testSchedulingMode="Sequential" />
   <!-- For collecting by a SpecRun server update and enable the following element. For using the 
       collected statistics, set testSchedulingMode="Adaptive" attribute on the <Execution> element.
