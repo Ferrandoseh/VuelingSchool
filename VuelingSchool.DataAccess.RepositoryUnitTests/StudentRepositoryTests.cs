@@ -26,14 +26,14 @@ namespace VuelingSchool.DataAccess.Repository.Tests
         [TestMethod()]
         public void GetStudentByNameTest()
         {
-            var result = mockObject.GetStudentByName(1);
+            var result = mockObject.GetStudentNameById(1);
             Assert.AreEqual("Ferran", result);
         }
 
         [TestMethod()]
         public void GetStudentNameByIdTest()
         {
-            var result = mockObject.GetStudentByName(1);
+            var result = mockObject.GetStudentNameById(1);
             Assert.AreEqual("Ferran", result);
         }
     }
