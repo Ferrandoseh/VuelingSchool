@@ -11,7 +11,6 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
     {
         private readonly StudentRepository studentRepository = new StudentRepository();
         Student prevStudent = null, addedStudent = null;
-        String studentId, name, surname, birthDay;
 
         [Given(@"there is a new student")]
         public void GivenThereIsANewStudent()
