@@ -82,16 +82,15 @@ namespace VuelingSchool.DataAccess.Repository
         public Student GetStudentById(string studentId)
         {
             Student student = null;
-            bool found = false;
             List<Student> studentList = null;
             try
             {
+                bool found = false;
                 studentList = GetAllStudents();
                 int count = studentList.Count;
-                for(int i = 0; i < count && !found; i++)
+                foreach (Student s in studentList)
                 {
-                    Student s = studentList[i];
-                    if( studentId.Equals(s.StudentId) )
+                    if (studentId.Equals(s.StudentId))
                     {
                         found = true;
                         student = s;

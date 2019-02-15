@@ -20,7 +20,7 @@ namespace VuelingSchool.Presentation.Console
         public static void SelectOption()
         {
             string caseSwitch = null;
-            while (true)
+            do
             {
                 System.Console.WriteLine("\n\nAcciones a realizar:");
                 System.Console.WriteLine("\t 1. Add new student");
@@ -30,9 +30,9 @@ namespace VuelingSchool.Presentation.Console
                 System.Console.WriteLine("\t . Exit");
                 caseSwitch = System.Console.ReadLine();
                 System.Console.WriteLine("You entered '{0}'", caseSwitch);
-                
+
                 StudentRepository sr = new StudentRepository();
-                
+
                 switch (caseSwitch)
                 {
                     case "1":
@@ -47,8 +47,8 @@ namespace VuelingSchool.Presentation.Console
                     default:
                         Environment.Exit(0);
                         break;
-                }                    
-            }
+                }
+            } while (true);
         }
 
         private static void GetStudentParams(StudentRepository sr)
@@ -72,27 +72,32 @@ namespace VuelingSchool.Presentation.Console
             catch (ArgumentNullException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
             catch (ArgumentException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
             catch (FileNotFoundException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
             catch (DirectoryNotFoundException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
             catch (IOException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
         }
         private static void ShowStudents(StudentRepository sr)
@@ -115,27 +120,32 @@ namespace VuelingSchool.Presentation.Console
             catch (ArgumentNullException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
             catch (ArgumentException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
             catch (FileNotFoundException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
             catch (DirectoryNotFoundException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
             catch (IOException e)
             {
                 log.Error(e.Message);
-                throw;
+                System.Console.WriteLine(e.Message);
+                System.Console.Read();
             }
         }
 
