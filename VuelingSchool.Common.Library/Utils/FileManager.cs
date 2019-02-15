@@ -22,10 +22,10 @@ namespace VuelingSchool.Common.Library.Utils
         }
         private static Student GetLastStudent()
         {
-            List<Student> lines =  Get();
+            List<Student> lines =  GetAll();
             return lines[lines.Count - 1];
         }
-        public static List<Student> Get()
+        public static List<Student> GetAll()
         {
             List<Student> students = new List<Student>();
             string line = "";

@@ -12,7 +12,7 @@ namespace VuelingSchool.DataAccess.Repository
         }
         public List<Student> GetAllStudents()
         {
-            return FileManager.Get();
+            return FileManager.GetAll();
         }
         public Student GetStudentById(string studentId)
         {
