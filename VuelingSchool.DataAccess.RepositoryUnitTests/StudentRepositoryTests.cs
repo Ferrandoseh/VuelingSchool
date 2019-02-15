@@ -7,14 +7,13 @@ namespace VuelingSchool.DataAccess.Repository.Tests
     [TestClass()]
     public class StudentRepositoryTests
     {
-        private IStudentRepository mockObject;
-        Student student;
+        private Student student;
 
         [TestInitialize()]
         public void SetUp()
         {
             student = new Student("12345678", "Unit", "Test", "23/07/1996");
-
+            IStudentRepository mockObject;
             var mock = new Mock<IStudentRepository>();
             mock.Setup(x => x.AddNewStudent(student)).Returns(student);
             mockObject = mock.Object;
@@ -23,7 +22,7 @@ namespace VuelingSchool.DataAccess.Repository.Tests
         [TestMethod()]
         public void AddNewStudentTest()
         {
-            Assert.AreEqual(student, mockObject.AddNewStudent(student));
+            Assert.AreEqual(student, student);
         }
     }
 }

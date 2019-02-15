@@ -137,6 +137,66 @@ namespace VuelingSchool.Common.Library.Utils
             return o;
         }
 
+        public static bool DeleteObject(string id)
+        {
+            bool found = false;
+            try
+            {
+                string line = "";
+                int lineToEdit = 0;
+                using (StreamReader sr = new StreamReader(localPath))
+                {
+                    while ((line = sr.ReadLine()) != null && !found)
+                    {
+                        Student lineObject = Student.ToObject(line);
+                        if (lineObject.StudentId.Equals(id))
+                            found = true;
+                        else
+                            lineToEdit++;
+                    }
+                }
+                if (found)
+                {
+                    string[] lines = File.ReadAllLines(localPath);
+                    using (StreamWriter writer = new StreamWriter(localPath))
+                    {
+                        int length = lines.Length;
+                        for (int i = 0; i < length; i++)
+                        {
+                            if (i != lineToEdit)
+                                writer.WriteLine(lines[i]);
+                        }
+                    }
+                }
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return found;
+        }
+
         public static Student UpdateObject(Student o)
         {
             try

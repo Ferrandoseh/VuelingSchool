@@ -114,6 +114,46 @@ namespace VuelingSchool.DataAccess.Repository
             return student;
         }
 
+        public bool DeleteStudent(string studentId)
+        {
+            bool deletedStudent = false;
+            try
+            {
+                deletedStudent = FileManager.DeleteObject(studentId);
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (NullReferenceException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return deletedStudent;
+        }
+
         public Student UpdateStudent(string studentId, string name, string surname, string birthday)
         {
             Student updatedStudent = null;

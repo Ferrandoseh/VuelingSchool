@@ -28,6 +28,7 @@ namespace VuelingSchool.Presentation.Console
                 System.Console.WriteLine("\t 2. Show all students");
                 System.Console.WriteLine("\t 3. Get student by id");
                 System.Console.WriteLine("\t 4. Update student by id");
+                System.Console.WriteLine("\t 5. Delete student by id");
                 System.Console.WriteLine("\t 0. Exit");
                 caseSwitch = System.Console.ReadLine();
                 System.Console.WriteLine("You entered '{0}'", caseSwitch);
@@ -46,20 +47,63 @@ namespace VuelingSchool.Presentation.Console
                     case "4":
                         UpdateStudent();
                         break;
+                    case "5":
+                        DeleteStudent();
+                        break;
                     default:
                         Environment.Exit(0);
                         break;
                 }
             } while (true);
         }
-               
-        private static void GetStudentParams()
-        {
-            InputStudentParams(out string studentId, out string name, out string surname, out string birthday);
 
-            Student student = new Student(studentId, name, surname, birthday);
+        private static void DeleteStudent()
+        {
             try
             {
+                System.Console.Write("\tType the StudentId: ");
+                string studentId = System.Console.ReadLine();
+                if (!sr.DeleteStudent(studentId))
+                    System.Console.WriteLine("There's not any Student with such StudentId"); ;
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (NullReferenceException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+        }
+
+        private static void GetStudentParams()
+        {
+            try
+            {
+                InputStudentParams(out string studentId, out string name, out string surname, out string birthday);
+                Student student = new Student(studentId, name, surname, birthday);
                 sr.AddNewStudent(student);
             }
             catch (ArgumentNullException e)
