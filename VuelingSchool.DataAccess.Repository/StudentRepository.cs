@@ -82,15 +82,9 @@ namespace VuelingSchool.DataAccess.Repository
         public Student GetStudentById(string studentId)
         {
             Student student = null;
-            List<Student> studentList = null;
             try
             {
-                studentList = GetAllStudents();
-                foreach (Student s in studentList)
-                {
-                    if (studentId.Equals(s.StudentId))
-                        student = s;
-                }
+                student = FileManager.GetObjectById(studentId);
             }
             catch (ArgumentNullException e)
             {
@@ -118,6 +112,51 @@ namespace VuelingSchool.DataAccess.Repository
                 throw;
             }
             return student;
+        }
+
+        public Student UpdateStudent(string studentId, string name, string surname, string birthday)
+        {
+            Student updatedStudent = null;
+            try
+            {
+                Student prevStudent = FileManager.GetObjectById(studentId);
+                prevStudent.StudentId = studentId;
+                prevStudent.Name = name;
+                prevStudent.Surname = surname;
+                prevStudent.Birthday = birthday;
+                updatedStudent = FileManager.UpdateObject(prevStudent);
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (NullReferenceException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return updatedStudent;
         }
     }
 }

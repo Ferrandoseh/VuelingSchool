@@ -17,13 +17,13 @@ namespace VuelingSchool.Common.Library.Utils
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static Student Add(Student student)
+        public static Student Add(Student o)
         {       
             try
             {
                 using (StreamWriter w = File.AppendText(localPath))
                 {
-                    w.WriteLine(student.ToString());
+                    w.WriteLine(o.ToString());
                 }
             }
             catch (UnauthorizedAccessException e)
@@ -90,12 +90,12 @@ namespace VuelingSchool.Common.Library.Utils
                 log.Error(e.Message);
                 throw;
             }
-
             return lines[lines.Count - 1];            
         }
-        public static List<Student> GetAll()
+
+        public static Student GetObjectById(string id)
         {
-            List<Student> students = new List<Student>();
+            Student o = null;
             string line = "";
             try
             {
@@ -103,7 +103,9 @@ namespace VuelingSchool.Common.Library.Utils
                 {
                     while ((line = sr.ReadLine()) != null)
                     {
-                        students.Add( Student.LineToObject(line) );
+                        Student lineObject = Student.ToObject(line);
+                        if (lineObject.StudentId.Equals(id))
+                            o = lineObject;
                     }
                 }
             }
@@ -132,7 +134,113 @@ namespace VuelingSchool.Common.Library.Utils
                 log.Error(e.Message);
                 throw;
             }
-            return students;
+            return o;
+        }
+
+        public static Student UpdateObject(Student o)
+        {
+            try
+            {
+                bool found = false;
+                string line = "";
+                int lineToEdit = 0;
+
+                using (StreamReader sr = new StreamReader(localPath))
+                {
+                    while ((line = sr.ReadLine()) != null && !found)
+                    {
+                        Student lineObject = Student.ToObject(line);
+                        string studentId = o.StudentId;
+                        if (lineObject.StudentId.Equals(studentId))
+                            found = true;
+                        else
+                            lineToEdit++;
+                    }
+                }
+                if(found)
+                {
+                    string[] lines = File.ReadAllLines(localPath);
+                    using (StreamWriter writer = new StreamWriter(localPath))
+                    {
+                        int length = lines.Length;
+                        for (int i = 0; i < length; i++)
+                        {
+                            if (i == lineToEdit)
+                                writer.WriteLine(o.ToString());
+                            else
+                                writer.WriteLine(lines[i]);
+                        }
+                    }
+                }                
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return o;
+        }
+
+        public static List<Student> GetAll()
+        {
+            List<Student> objects = new List<Student>();
+            string line = "";
+            try
+            {
+                using (StreamReader sr = new StreamReader(localPath))
+                {
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        objects.Add( Student.ToObject(line) );
+                    }
+                }
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return objects;
         }
     }    
 }

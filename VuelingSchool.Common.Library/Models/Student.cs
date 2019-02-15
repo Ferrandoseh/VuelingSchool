@@ -28,7 +28,7 @@ namespace VuelingSchool.Common.Library.Models
         {
             this.SGuid = Guid.NewGuid();
         }
-        public static Student LineToObject(string line)
+        public static Student ToObject(string line)
         {
             var expression = new Regex(
                 String.Concat("(?<Guid>[^,]+), ", "(?<StudentId>[^,]+), ", "(?<Name>[^,]+), ",
@@ -50,7 +50,6 @@ namespace VuelingSchool.Common.Library.Models
         {
             return String.Concat(SGuid.ToString(), ", ", StudentId, ", ", Name, ", ", Surname, ", ", Birthday);
         }
-
         public override bool Equals(object obj)
         {
             var student = obj as Student;
@@ -61,7 +60,6 @@ namespace VuelingSchool.Common.Library.Models
                    Surname == student.Surname &&
                    Birthday == student.Birthday;
         }
-
         public override int GetHashCode()
         {
             var hashCode = -1475940576;
