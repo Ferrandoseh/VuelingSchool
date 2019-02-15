@@ -28,7 +28,7 @@ namespace VuelingSchool.Common.Library.Models
         {
             this.SGuid = Guid.NewGuid();
         }
-        public static Student LineToStudent(string line)
+        public static Student LineToObject(string line)
         {
             var expression = new Regex(
                 String.Concat("(?<Guid>[^,]+), ", "(?<StudentId>[^,]+), ", "(?<Name>[^,]+), ",

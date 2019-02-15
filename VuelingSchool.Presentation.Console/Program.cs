@@ -24,10 +24,9 @@ namespace VuelingSchool.Presentation.Console
             {
                 System.Console.WriteLine("\n\nAcciones a realizar:");
                 System.Console.WriteLine("\t 1. Add new student");
-
                 System.Console.WriteLine("\t 2. Show all students");
                 System.Console.WriteLine("\t 3. Get student by id");
-                System.Console.WriteLine("\t . Exit");
+                System.Console.WriteLine("\t 0. Exit");
                 caseSwitch = System.Console.ReadLine();
                 System.Console.WriteLine("You entered '{0}'", caseSwitch);
 
@@ -102,7 +101,34 @@ namespace VuelingSchool.Presentation.Console
         }
         private static void ShowStudents(StudentRepository sr)
         {
-            StudentListToString(sr.GetAllStudents());
+            try { 
+                StudentListToString(sr.GetAllStudents());
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
         }
         private static void ShowStudent(StudentRepository sr)
         {

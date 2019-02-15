@@ -103,7 +103,7 @@ namespace VuelingSchool.Common.Library.Utils
                 {
                     while ((line = sr.ReadLine()) != null)
                     {
-                        students.Add( Student.LineToStudent(line) );
+                        students.Add( Student.LineToObject(line) );
                     }
                 }
             }
