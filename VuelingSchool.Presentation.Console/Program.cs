@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using VuelingSchool.Common.Library.Models;
 using VuelingSchool.Common.Library.Utils;
 using VuelingSchool.DataAccess.Repository;
@@ -8,6 +9,9 @@ namespace VuelingSchool.Presentation.Console
 {
     public static class Program
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static void Main(string[] args)
         {
             SelectOption();
@@ -23,7 +27,6 @@ namespace VuelingSchool.Presentation.Console
 
                 System.Console.WriteLine("\t 2. Show all students");
                 System.Console.WriteLine("\t 3. Get student by id");
-                System.Console.WriteLine("\t 4. Throw an exception");
                 System.Console.WriteLine("\t . Exit");
                 caseSwitch = System.Console.ReadLine();
                 System.Console.WriteLine("You entered '{0}'", caseSwitch);
@@ -40,9 +43,6 @@ namespace VuelingSchool.Presentation.Console
                         break;
                     case "3":
                         ShowStudent(sr);
-                        break;
-                    case "4":
-                        ThrowException();
                         break;
                     default:
                         Environment.Exit(0);
@@ -65,7 +65,35 @@ namespace VuelingSchool.Presentation.Console
             Birthday = System.Console.ReadLine();
 
             Student student = new Student(StudentId, Name, Surname, Birthday);
-            sr.AddNewStudent(student);
+            try
+            {
+                sr.AddNewStudent(student);
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
         }
         private static void ShowStudents(StudentRepository sr)
         {
@@ -76,15 +104,39 @@ namespace VuelingSchool.Presentation.Console
             string studentId;
             System.Console.Write("\t Enter Student Id: ");
             studentId = System.Console.ReadLine();
-            Student student = sr.GetStudentById(studentId);
-            if (student == null)
-                System.Console.WriteLine("There's not any Student with such StudentId");
-            else
-                System.Console.WriteLine(student.ToString());
-        }
-        private static void ThrowException()
-        {
-            FileManager.ThrowException();
+            try
+            {
+                Student student = sr.GetStudentById(studentId);
+                if (student == null)
+                    System.Console.WriteLine("There's not any Student with such StudentId");
+                else
+                    System.Console.WriteLine(student.ToString());
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
         }
 
         private static void StudentListToString(List<Student> studentsList)

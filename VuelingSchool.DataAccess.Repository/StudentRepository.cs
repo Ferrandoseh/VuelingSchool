@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using VuelingSchool.Common.Library.Models;
 using VuelingSchool.Common.Library.Utils;
 
@@ -6,28 +8,120 @@ namespace VuelingSchool.DataAccess.Repository
 {
     public class StudentRepository : IStudentRepository
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public Student AddNewStudent(Student student)
         {
-            return FileManager.Add(student);
+            Student addedStudent = null;
+            try
+            {
+                addedStudent = FileManager.Add(student);
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return addedStudent;
         }
         public List<Student> GetAllStudents()
         {
-            return FileManager.GetAll();
+            List<Student> studentList = null;
+            try
+            {
+                studentList = FileManager.GetAll();
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return studentList;
         }
         public Student GetStudentById(string studentId)
         {
             Student student = null;
             bool found = false;
-            List<Student> studentList = GetAllStudents();
-            int count = studentList.Count;
-            for(int i = 0; i < count && !found; i++)
+            List<Student> studentList = null;
+            try
             {
-                Student s = studentList[i];
-                if( studentId.Equals(s.StudentId) )
+                studentList = GetAllStudents();
+                int count = studentList.Count;
+                for(int i = 0; i < count && !found; i++)
                 {
-                    found = true;
-                    student = s;
+                    Student s = studentList[i];
+                    if( studentId.Equals(s.StudentId) )
+                    {
+                        found = true;
+                        student = s;
+                    }
                 }
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
             }
             return student;
         }

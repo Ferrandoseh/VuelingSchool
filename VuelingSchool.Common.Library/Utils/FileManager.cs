@@ -8,22 +8,90 @@ namespace VuelingSchool.Common.Library.Utils
 {
     public static class FileManager
     {
-        private static readonly string localPath = ConfigurationManager.AppSettings["localPath"];
+        private static readonly string repositoryPath = ConfigurationManager.AppSettings.Get("localPath");
+        private static readonly string environmentPath = Environment.GetEnvironmentVariable("localPath",
+            EnvironmentVariableTarget.User);
+        private static readonly string localPath = !string.IsNullOrEmpty(environmentPath) ? 
+            environmentPath : repositoryPath;
+
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static Student Add(Student student)
         {       
-            using (StreamWriter w = File.AppendText(localPath))
+            try
             {
-                w.WriteLine( student.ToString() );
+                using (StreamWriter w = File.AppendText(localPath))
+                {
+                    w.WriteLine(student.ToString());
+                }
             }
-            return GetLastStudent();
+            catch (UnauthorizedAccessException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (PathTooLongException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (NotSupportedException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return GetLast();
         }
-        private static Student GetLastStudent()
+        private static Student GetLast()
         {
-            List<Student> lines =  GetAll();
-            return lines[lines.Count - 1];
+            List<Student> lines = null;
+            try
+            {
+                lines =  GetAll();
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+
+            return lines[lines.Count - 1];            
         }
         public static List<Student> GetAll()
         {
@@ -39,26 +107,32 @@ namespace VuelingSchool.Common.Library.Utils
                     }
                 }
             }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
             catch (FileNotFoundException e)
             {
                 log.Error(e.Message);
                 throw;
             }
-            return students;
-        }
-
-        public static void ThrowException()
-        {
-            log.Error("Error trying to do something");
-            try
+            catch (DirectoryNotFoundException e)
             {
-                throw new NotImplementedException();
-            }
-            catch (NotImplementedException e)
-            {
-                log.Error(e);
+                log.Error(e.Message);
                 throw;
             }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return students;
         }
     }    
 }
