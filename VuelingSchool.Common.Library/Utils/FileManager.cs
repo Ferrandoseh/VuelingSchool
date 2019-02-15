@@ -199,6 +199,7 @@ namespace VuelingSchool.Common.Library.Utils
 
         public static Student UpdateObject(Student o)
         {
+            Student updated = null;
             try
             {
                 bool found = false;
@@ -219,6 +220,7 @@ namespace VuelingSchool.Common.Library.Utils
                 }
                 if(found)
                 {
+                    updated = o;
                     string[] lines = File.ReadAllLines(localPath);
                     using (StreamWriter writer = new StreamWriter(localPath))
                     {
@@ -258,7 +260,7 @@ namespace VuelingSchool.Common.Library.Utils
                 log.Error(e.Message);
                 throw;
             }
-            return o;
+            return updated;
         }
 
         public static List<Student> GetAll()

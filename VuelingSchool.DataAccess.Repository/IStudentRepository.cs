@@ -8,5 +8,7 @@ namespace VuelingSchool.DataAccess.Repository
         Student AddNewStudent(Student student);
         List<Student> GetAllStudents();
         Student GetStudentById(string studentId);
+        Student UpdateStudent(string studentId, string name, string surname, string birthday);
+        bool DeleteStudent(string studentId);
     }
 }

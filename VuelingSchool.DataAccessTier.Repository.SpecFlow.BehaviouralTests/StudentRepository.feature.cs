@@ -17,8 +17,14 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("StudentRepository", Description="\tI want to store students properly\r\n\tAdd a new Student and validate is readable l" +
-        "ater", SourceFile="StudentRepository.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("StudentRepository", Description=@"	I want to store students properly
+	Add a Student and validate is readable later
+	Delete Student
+	Try to delete a Student it doesn't exist
+	Get a Student
+	Try to get a Student it doesn't exist
+	Update a Student
+	Try to update a Student it doesn't exist", SourceFile="StudentRepository.feature", SourceLine=0)]
     public partial class StudentRepositoryFeature
     {
         
@@ -31,8 +37,14 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "StudentRepository", "\tI want to store students properly\r\n\tAdd a new Student and validate is readable l" +
-                    "ater", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "StudentRepository", @"	I want to store students properly
+	Add a Student and validate is readable later
+	Delete Student
+	Try to delete a Student it doesn't exist
+	Get a Student
+	Try to get a Student it doesn't exist
+	Update a Student
+	Try to update a Student it doesn't exist", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -68,59 +80,397 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void AddNewStudentInAFileText(string studentId, string name, string surname, string birthDay, string[] exampleTags)
+        public virtual void AddStudentInAFileText(string studentId, string name, string surname, string birthDay, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add new Student in a file text", null, exampleTags);
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Student in a file text", null, exampleTags);
+#line 11
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
- testRunner.Given("there is a new student", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 7
- testRunner.And(string.Format("I have entered {0} as the ID", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 8
- testRunner.And(string.Format("I have entered {0} as a name", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 9
- testRunner.And(string.Format("I have entered {0} as a surname", surname), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
- testRunner.And(string.Format("I have entered {0} as a date of birth", birthDay), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 11
- testRunner.When("I add this student into a file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
+ testRunner.Given("There is a new student", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 13
+ testRunner.And(string.Format("I have entered {0} as the StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.And(string.Format("I have entered {0} as a name", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
+ testRunner.And(string.Format("I have entered {0} as a surname", surname), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 16
+ testRunner.And(string.Format("I have entered {0} as a date of birth", birthDay), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 17
+ testRunner.When("I add this student into a file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 18
  testRunner.Then("The student got is the same as the student added previously", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add new Student in a file text, \"0001\"", SourceLine=15)]
-        public virtual void AddNewStudentInAFileText_0001()
+        [TechTalk.SpecRun.ScenarioAttribute("Add Student in a file text, \"0001\"", SourceLine=21)]
+        public virtual void AddStudentInAFileText_0001()
         {
-#line 5
-this.AddNewStudentInAFileText("\"0001\"", "\"Marco\"", "\"Polo\"", "\"01/01/2001\"", ((string[])(null)));
+#line 11
+this.AddStudentInAFileText("\"0001\"", "\"Marco\"", "\"Polo\"", "\"01/01/2001\"", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add new Student in a file text, \"0002\"", SourceLine=15)]
-        public virtual void AddNewStudentInAFileText_0002()
+        [TechTalk.SpecRun.ScenarioAttribute("Add Student in a file text, \"0002\"", SourceLine=21)]
+        public virtual void AddStudentInAFileText_0002()
         {
-#line 5
-this.AddNewStudentInAFileText("\"0002\"", "\"Ana\"", "\"Banana\"", "\"01/01/2001\"", ((string[])(null)));
+#line 11
+this.AddStudentInAFileText("\"0002\"", "\"Ana\"", "\"Banana\"", "\"01/01/2001\"", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add new Student in a file text, \"0003\"", SourceLine=15)]
-        public virtual void AddNewStudentInAFileText_0003()
+        [TechTalk.SpecRun.ScenarioAttribute("Add Student in a file text, \"0003\"", SourceLine=21)]
+        public virtual void AddStudentInAFileText_0003()
         {
-#line 5
-this.AddNewStudentInAFileText("\"0003\"", "\"Poco\"", "\"Yo\"", "\"01/01/2001\"", ((string[])(null)));
+#line 11
+this.AddStudentInAFileText("\"0003\"", "\"Poco\"", "\"Yo\"", "\"01/01/2001\"", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add new Student in a file text, \"0004\"", SourceLine=15)]
-        public virtual void AddNewStudentInAFileText_0004()
+        [TechTalk.SpecRun.ScenarioAttribute("Add Student in a file text, \"0004\"", SourceLine=21)]
+        public virtual void AddStudentInAFileText_0004()
         {
-#line 5
-this.AddNewStudentInAFileText("\"0004\"", "\"Homer\"", "\"Simpson\"", "\"01/01/2001\"", ((string[])(null)));
+#line 11
+this.AddStudentInAFileText("\"0004\"", "\"Homer\"", "\"Simpson\"", "\"01/01/2001\"", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void GetAStudentFromAFileText(string studentId, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get a Student from a file text", null, exampleTags);
+#line 28
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 29
+ testRunner.Given(string.Format("There is a student with the {0} as its StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 30
+ testRunner.And(string.Format("I have entered {0} as the StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 31
+ testRunner.When("I try to get this student from the file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 32
+ testRunner.Then(string.Format("The student got has {0} as its StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Get a Student from a file text, \"0001\"", SourceLine=35)]
+        public virtual void GetAStudentFromAFileText_0001()
+        {
+#line 28
+this.GetAStudentFromAFileText("\"0001\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Get a Student from a file text, \"0002\"", SourceLine=35)]
+        public virtual void GetAStudentFromAFileText_0002()
+        {
+#line 28
+this.GetAStudentFromAFileText("\"0002\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Get a Student from a file text, \"0003\"", SourceLine=35)]
+        public virtual void GetAStudentFromAFileText_0003()
+        {
+#line 28
+this.GetAStudentFromAFileText("\"0003\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Get a Student from a file text, \"0004\"", SourceLine=35)]
+        public virtual void GetAStudentFromAFileText_0004()
+        {
+#line 28
+this.GetAStudentFromAFileText("\"0004\"", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void GetAStudentFromAFileTextWhenItDoesntExist(string studentId, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get a Student from a file text when it doesn\'t exist", null, exampleTags);
+#line 42
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 43
+ testRunner.Given(string.Format("There is not any student with the {0} as its StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 44
+ testRunner.And(string.Format("I have entered {0} as the StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 45
+ testRunner.When("I try to get this student from the file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 46
+ testRunner.Then("The student got is null", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Get a Student from a file text when it doesn\'t exist, \"1111\"", SourceLine=49)]
+        public virtual void GetAStudentFromAFileTextWhenItDoesntExist_1111()
+        {
+#line 42
+this.GetAStudentFromAFileTextWhenItDoesntExist("\"1111\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Get a Student from a file text when it doesn\'t exist, \"2222\"", SourceLine=49)]
+        public virtual void GetAStudentFromAFileTextWhenItDoesntExist_2222()
+        {
+#line 42
+this.GetAStudentFromAFileTextWhenItDoesntExist("\"2222\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Get a Student from a file text when it doesn\'t exist, \"3333\"", SourceLine=49)]
+        public virtual void GetAStudentFromAFileTextWhenItDoesntExist_3333()
+        {
+#line 42
+this.GetAStudentFromAFileTextWhenItDoesntExist("\"3333\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Get a Student from a file text when it doesn\'t exist, \"4444\"", SourceLine=49)]
+        public virtual void GetAStudentFromAFileTextWhenItDoesntExist_4444()
+        {
+#line 42
+this.GetAStudentFromAFileTextWhenItDoesntExist("\"4444\"", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void DeleteAStudentFromAFileText(string studentId, string deleted, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete a Student from a file text", null, exampleTags);
+#line 56
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "studentId",
+                        "name",
+                        "surname",
+                        "birthDay"});
+            table1.AddRow(new string[] {
+                        "0005",
+                        "Marco",
+                        "Polo",
+                        "01/01/2001"});
+            table1.AddRow(new string[] {
+                        "0006",
+                        "Ana",
+                        "Banana",
+                        "01/01/2001"});
+            table1.AddRow(new string[] {
+                        "0007",
+                        "Poco",
+                        "Yo",
+                        "01/01/2001"});
+            table1.AddRow(new string[] {
+                        "0008",
+                        "Homer",
+                        "Simpson",
+                        "01/01/2001"});
+#line 57
+ testRunner.Given("There is a student with these params", ((string)(null)), table1, "Given ");
+#line 63
+ testRunner.And(string.Format("I have entered {0} as the StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 64
+ testRunner.When("I delete this student from a file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 65
+ testRunner.Then(string.Format("The result is {0}", deleted), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Delete a Student from a file text, \"0005\"", SourceLine=68)]
+        public virtual void DeleteAStudentFromAFileText_0005()
+        {
+#line 56
+this.DeleteAStudentFromAFileText("\"0005\"", "true", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Delete a Student from a file text, \"0006\"", SourceLine=68)]
+        public virtual void DeleteAStudentFromAFileText_0006()
+        {
+#line 56
+this.DeleteAStudentFromAFileText("\"0006\"", "true", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Delete a Student from a file text, \"0007\"", SourceLine=68)]
+        public virtual void DeleteAStudentFromAFileText_0007()
+        {
+#line 56
+this.DeleteAStudentFromAFileText("\"0007\"", "true", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Delete a Student from a file text, \"0008\"", SourceLine=68)]
+        public virtual void DeleteAStudentFromAFileText_0008()
+        {
+#line 56
+this.DeleteAStudentFromAFileText("\"0008\"", "true", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void DeleteAStudentFromAFileTextWhenItDoesntExist(string studentId, string deleted, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete a Student from a file text when it doesn\'t exist", null, exampleTags);
+#line 75
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 76
+ testRunner.Given(string.Format("There is not any student with the {0} as its StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 77
+ testRunner.And(string.Format("I have entered {0} as the StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 78
+ testRunner.When("I delete this student from a file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 79
+ testRunner.Then(string.Format("The result is {0}", deleted), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Delete a Student from a file text when it doesn\'t exist, \"1111\"", SourceLine=82)]
+        public virtual void DeleteAStudentFromAFileTextWhenItDoesntExist_1111()
+        {
+#line 75
+this.DeleteAStudentFromAFileTextWhenItDoesntExist("\"1111\"", "false", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Delete a Student from a file text when it doesn\'t exist, \"2222\"", SourceLine=82)]
+        public virtual void DeleteAStudentFromAFileTextWhenItDoesntExist_2222()
+        {
+#line 75
+this.DeleteAStudentFromAFileTextWhenItDoesntExist("\"2222\"", "false", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Delete a Student from a file text when it doesn\'t exist, \"3333\"", SourceLine=82)]
+        public virtual void DeleteAStudentFromAFileTextWhenItDoesntExist_3333()
+        {
+#line 75
+this.DeleteAStudentFromAFileTextWhenItDoesntExist("\"3333\"", "false", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Delete a Student from a file text when it doesn\'t exist, \"4444\"", SourceLine=82)]
+        public virtual void DeleteAStudentFromAFileTextWhenItDoesntExist_4444()
+        {
+#line 75
+this.DeleteAStudentFromAFileTextWhenItDoesntExist("\"4444\"", "false", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void UpdateAStudentFromAFileText(string studentId, string name, string surname, string birthDay, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update a Student from a file text", null, exampleTags);
+#line 89
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 90
+ testRunner.Given(string.Format("There is a student with the {0} as its StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 91
+ testRunner.And(string.Format("I have entered {0} as the StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 92
+ testRunner.And(string.Format("I have entered {0} as a name", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 93
+ testRunner.And(string.Format("I have entered {0} as a surname", surname), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 94
+ testRunner.And(string.Format("I have entered {0} as a date of birth", birthDay), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 95
+ testRunner.When("I update this student in a file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 96
+ testRunner.Then("The student got has the parameters entered previously", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Update a Student from a file text, \"0009\"", SourceLine=99)]
+        public virtual void UpdateAStudentFromAFileText_0009()
+        {
+#line 89
+this.UpdateAStudentFromAFileText("\"0009\"", "\"Marco\"", "\"Polo\"", "\"01/01/2001\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Update a Student from a file text, \"0010\"", SourceLine=99)]
+        public virtual void UpdateAStudentFromAFileText_0010()
+        {
+#line 89
+this.UpdateAStudentFromAFileText("\"0010\"", "\"Ana\"", "\"Banana\"", "\"01/01/2001\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Update a Student from a file text, \"0011\"", SourceLine=99)]
+        public virtual void UpdateAStudentFromAFileText_0011()
+        {
+#line 89
+this.UpdateAStudentFromAFileText("\"0011\"", "\"Poco\"", "\"Yo\"", "\"01/01/2001\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Update a Student from a file text, \"0012\"", SourceLine=99)]
+        public virtual void UpdateAStudentFromAFileText_0012()
+        {
+#line 89
+this.UpdateAStudentFromAFileText("\"0012\"", "\"Homer\"", "\"Simpson\"", "\"01/01/2001\"", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void UpdateAStudentFromAFileTextWhenItDoesNotExist(string studentId, string name, string surname, string birthDay, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update a Student from a file text when it does not exist", null, exampleTags);
+#line 106
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 107
+ testRunner.Given(string.Format("There is not any student with the {0} as its StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 108
+ testRunner.And(string.Format("I have entered {0} as the StudentId", studentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 109
+ testRunner.And(string.Format("I have entered {0} as a name", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 110
+ testRunner.And(string.Format("I have entered {0} as a surname", surname), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 111
+ testRunner.And(string.Format("I have entered {0} as a date of birth", birthDay), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 112
+ testRunner.When("I update this student in a file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 113
+ testRunner.Then("The student got is a null value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Update a Student from a file text when it does not exist, \"1111\"", SourceLine=116)]
+        public virtual void UpdateAStudentFromAFileTextWhenItDoesNotExist_1111()
+        {
+#line 106
+this.UpdateAStudentFromAFileTextWhenItDoesNotExist("\"1111\"", "\"Marco\"", "\"Polo\"", "\"01/01/2001\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Update a Student from a file text when it does not exist, \"2222\"", SourceLine=116)]
+        public virtual void UpdateAStudentFromAFileTextWhenItDoesNotExist_2222()
+        {
+#line 106
+this.UpdateAStudentFromAFileTextWhenItDoesNotExist("\"2222\"", "\"Ana\"", "\"Banana\"", "\"01/01/2001\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Update a Student from a file text when it does not exist, \"3333\"", SourceLine=116)]
+        public virtual void UpdateAStudentFromAFileTextWhenItDoesNotExist_3333()
+        {
+#line 106
+this.UpdateAStudentFromAFileTextWhenItDoesNotExist("\"3333\"", "\"Poco\"", "\"Yo\"", "\"01/01/2001\"", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Update a Student from a file text when it does not exist, \"4444\"", SourceLine=116)]
+        public virtual void UpdateAStudentFromAFileTextWhenItDoesNotExist_4444()
+        {
+#line 106
+this.UpdateAStudentFromAFileTextWhenItDoesNotExist("\"4444\"", "\"Homer\"", "\"Simpson\"", "\"01/01/2001\"", ((string[])(null)));
 #line hidden
         }
         

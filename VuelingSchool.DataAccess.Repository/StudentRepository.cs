@@ -160,11 +160,13 @@ namespace VuelingSchool.DataAccess.Repository
             try
             {
                 Student prevStudent = FileManager.GetObjectById(studentId);
-                prevStudent.StudentId = studentId;
-                prevStudent.Name = name;
-                prevStudent.Surname = surname;
-                prevStudent.Birthday = birthday;
-                updatedStudent = FileManager.UpdateObject(prevStudent);
+                if (prevStudent != null) {
+                    prevStudent.StudentId = studentId;
+                    prevStudent.Name = name;
+                    prevStudent.Surname = surname;
+                    prevStudent.Birthday = birthday;
+                    updatedStudent = FileManager.UpdateObject(prevStudent);
+                }
             }
             catch (ArgumentNullException e)
             {
