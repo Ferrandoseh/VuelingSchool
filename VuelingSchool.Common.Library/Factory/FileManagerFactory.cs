@@ -4,6 +4,7 @@ namespace VuelingSchool.Common.Library.Factory
 {
     public class FileManagerFactory : AbstractManagerFactory
     {
+        private FileManager FileManager;
         private FileManagerFactory()
         {
         }
@@ -12,9 +13,9 @@ namespace VuelingSchool.Common.Library.Factory
         {
             get
             {
-                if (instance == null)
-                    instance = new FileManagerFactory();
-                return (FileManagerFactory)instance;
+                if (managerFactory == null)
+                    managerFactory = new FileManagerFactory();
+                return (FileManagerFactory)managerFactory;
             }
         }
 

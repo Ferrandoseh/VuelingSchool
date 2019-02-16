@@ -66,13 +66,13 @@ namespace VuelingSchool.Presentation.Console
                 switch (caseSwitch)
                 {
                     case "1":
-                        GetStudentParams();
+                        AddStudent();
                         break;
                     case "2":
-                        ShowStudents();
+                        GetAllStudents();
                         break;
                     case "3":
-                        ShowStudent();
+                        GetStudent();
                         break;
                     case "4":
                         UpdateStudent();
@@ -87,48 +87,7 @@ namespace VuelingSchool.Presentation.Console
             } while (true);
         }
 
-        private static void DeleteStudent()
-        {
-            try
-            {
-                System.Console.Write("\tType the StudentId: ");
-                string studentId = System.Console.ReadLine();
-                if (!sr.DeleteStudent(studentId))
-                    System.Console.WriteLine("There's not any Student with such StudentId");
-            }
-            catch (ArgumentNullException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            catch (ArgumentException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            catch (FileNotFoundException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            catch (DirectoryNotFoundException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            catch (NullReferenceException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            catch (IOException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-        }
-
-        private static void GetStudentParams()
+        private static void AddStudent()
         {
             try
             {
@@ -167,7 +126,7 @@ namespace VuelingSchool.Presentation.Console
                 System.Console.Read();
             }
         }
-        private static void ShowStudents()
+        private static void GetAllStudents()
         {
             try { 
                 StudentListToString(sr.GetAllStudents());
@@ -198,7 +157,7 @@ namespace VuelingSchool.Presentation.Console
                 throw;
             }
         }
-        private static void ShowStudent()
+        private static void GetStudent()
         {
             string studentId;
             System.Console.Write("\t Enter Student Id: ");
@@ -240,6 +199,46 @@ namespace VuelingSchool.Presentation.Console
                 log.Error(e.Message);
                 System.Console.WriteLine(e.Message);
                 System.Console.Read();
+            }
+        }
+        private static void DeleteStudent()
+        {
+            try
+            {
+                System.Console.Write("\tType the StudentId: ");
+                string studentId = System.Console.ReadLine();
+                if (!sr.DeleteStudent(studentId))
+                    System.Console.WriteLine("There's not any Student with such StudentId");
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (NullReferenceException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
             }
         }
         private static void UpdateStudent()

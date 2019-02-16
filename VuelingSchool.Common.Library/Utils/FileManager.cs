@@ -13,11 +13,13 @@ namespace VuelingSchool.Common.Library.Utils
         protected static readonly string repositoryPath = ConfigurationManager.AppSettings.Get("localPath");
         protected static readonly string environmentPath = Environment.GetEnvironmentVariable("localPath",
             EnvironmentVariableTarget.User);
-        protected static readonly string localPath = !string.IsNullOrEmpty(environmentPath) ?
-            environmentPath : repositoryPath;
+        protected string localPath;
 
         protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        protected FileManager() => ComputeFilePath();
+        public abstract void ComputeFilePath();
 
         public abstract Student Add(Student o);
         public abstract List<Student> GetAll();

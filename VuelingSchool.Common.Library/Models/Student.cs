@@ -10,7 +10,7 @@ namespace VuelingSchool.Common.Library.Models
 {
     public class Student
     {
-        private Guid SGuid { get; set; }
+        public Guid SGuid { get; set; }
         public string StudentId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

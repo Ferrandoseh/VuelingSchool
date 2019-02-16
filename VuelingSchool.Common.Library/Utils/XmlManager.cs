@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,13 @@ namespace VuelingSchool.Common.Library.Utils
         public override Student UpdateObject(Student o)
         {
             throw new NotImplementedException();
+        }
+
+        public override void ComputeFilePath()
+        {
+            localPath = !string.IsNullOrEmpty(environmentPath) ?
+               environmentPath : repositoryPath;
+            localPath = String.Concat(localPath, "xml");
         }
     }
 }

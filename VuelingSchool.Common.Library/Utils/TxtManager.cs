@@ -7,7 +7,7 @@ using VuelingSchool.Common.Library.Models;
 namespace VuelingSchool.Common.Library.Utils
 {
     public class TxtManager : FileManager
-    {        
+    {
         public override Student Add(Student o)
         {       
             try
@@ -294,6 +294,13 @@ namespace VuelingSchool.Common.Library.Utils
                 throw;
             }
             return objects;
+        }
+
+        public override void ComputeFilePath()
+        {
+            localPath = !string.IsNullOrEmpty(environmentPath) ?
+               environmentPath : repositoryPath;
+            localPath = String.Concat(localPath, "txt");
         }
     }    
 }
