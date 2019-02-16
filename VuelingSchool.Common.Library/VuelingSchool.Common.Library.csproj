@@ -45,9 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\AbstractManagerFactory.cs" />
+    <Compile Include="Factory\FileManagerFactory.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\FileManager.cs" />
+    <Compile Include="Utils\JsonManager.cs" />
+    <Compile Include="Utils\TxtManager.cs" />
+    <Compile Include="Utils\XmlManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

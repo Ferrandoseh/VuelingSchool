@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using TechTalk.SpecFlow;
+using VuelingSchool.Common.Library.Factory;
 using VuelingSchool.Common.Library.Models;
 using VuelingSchool.DataAccess.Repository;
 
@@ -9,7 +10,7 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
     [Binding]
     public class StudentRepositorySteps
     {
-        private readonly IStudentRepository studentRepository = new StudentRepository();
+        private readonly IStudentRepository studentRepository = new StudentRepository( FileManagerFactory.Instance.CreateFileManager("txt") );
         private Student prevStudent, studentGot;
         string studentId;
         private bool result;
@@ -50,11 +51,13 @@ namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
         [Given(@"There is a student with the ""(.*)"" as its StudentId")]
         public void GivenThereIsAStudentWithTheAsItsStudentId(string p0)
         {
-            prevStudent = new Student();
-            prevStudent.StudentId = p0;
-            prevStudent.Name = "name";
-            prevStudent.Surname = "surname";
-            prevStudent.Birthday = "dd/mm/yyyy";
+            prevStudent = new Student
+            {
+                StudentId = p0,
+                Name = "name",
+                Surname = "surname",
+                Birthday = "dd/mm/yyyy"
+            };
             prevStudent = studentRepository.AddNewStudent(prevStudent);
         }
         

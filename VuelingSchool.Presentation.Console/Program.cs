@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using VuelingSchool.Common.Library.Factory;
 using VuelingSchool.Common.Library.Models;
 using VuelingSchool.Common.Library.Utils;
 using VuelingSchool.DataAccess.Repository;
@@ -12,23 +13,52 @@ namespace VuelingSchool.Presentation.Console
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private static readonly StudentRepository sr = new StudentRepository();
+        private static StudentRepository sr;
+
         public static void Main(string[] args)
         {
+            SelectTypeFile();
             SelectOption();
         }
-        
+
+        private static void SelectTypeFile()
+        {
+            string caseSwitch = null;
+            System.Console.WriteLine("\n\nSelect the type of file you want to use:");
+            System.Console.WriteLine("\t 1. TXT");
+            System.Console.WriteLine("\t 2. XML");
+            System.Console.WriteLine("\t 3. JSON");
+            caseSwitch = System.Console.ReadLine();
+            System.Console.WriteLine("You entered '{0}'", caseSwitch);
+
+            string fileType = "";
+            switch (caseSwitch)
+            {
+                case "1":
+                    fileType = "txt";
+                    break;
+                case "2":
+                    fileType = "xml";
+                    break;
+                default:
+                    fileType = "json";
+                    break;
+            }
+
+            sr = new StudentRepository( FileManagerFactory.Instance.CreateFileManager(fileType) );
+        }
+
         public static void SelectOption()
         {
             string caseSwitch = null;
             do
             {
-                System.Console.WriteLine("\n\nAcciones a realizar:");
-                System.Console.WriteLine("\t 1. Add new student");
-                System.Console.WriteLine("\t 2. Show all students");
-                System.Console.WriteLine("\t 3. Get student by id");
-                System.Console.WriteLine("\t 4. Update student by id");
-                System.Console.WriteLine("\t 5. Delete student by id");
+                System.Console.WriteLine("\n\nChoose an option:");
+                System.Console.WriteLine("\t 1. Add");
+                System.Console.WriteLine("\t 2. Show all");
+                System.Console.WriteLine("\t 3. Get by id");
+                System.Console.WriteLine("\t 4. Update by id");
+                System.Console.WriteLine("\t 5. Delete by id");
                 System.Console.WriteLine("\t 0. Exit");
                 caseSwitch = System.Console.ReadLine();
                 System.Console.WriteLine("You entered '{0}'", caseSwitch);
@@ -64,7 +94,7 @@ namespace VuelingSchool.Presentation.Console
                 System.Console.Write("\tType the StudentId: ");
                 string studentId = System.Console.ReadLine();
                 if (!sr.DeleteStudent(studentId))
-                    System.Console.WriteLine("There's not any Student with such StudentId"); ;
+                    System.Console.WriteLine("There's not any Student with such StudentId");
             }
             catch (ArgumentNullException e)
             {

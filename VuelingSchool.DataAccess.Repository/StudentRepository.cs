@@ -11,12 +11,16 @@ namespace VuelingSchool.DataAccess.Repository
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private FileManager fileManager;
+
+        public StudentRepository(FileManager fileManager) => this.fileManager = fileManager;
+
         public Student AddNewStudent(Student student)
         {
             Student addedStudent = null;
             try
             {
-                addedStudent = FileManager.Add(student);
+                addedStudent = fileManager.Add(student);
             }
             catch (ArgumentNullException e)
             {
@@ -50,7 +54,7 @@ namespace VuelingSchool.DataAccess.Repository
             List<Student> studentList = null;
             try
             {
-                studentList = FileManager.GetAll();
+                studentList = fileManager.GetAll();
             }
             catch (ArgumentNullException e)
             {
@@ -84,7 +88,7 @@ namespace VuelingSchool.DataAccess.Repository
             Student student = null;
             try
             {
-                student = FileManager.GetObjectById(studentId);
+                student = fileManager.GetObjectById(studentId);
             }
             catch (ArgumentNullException e)
             {
@@ -119,7 +123,7 @@ namespace VuelingSchool.DataAccess.Repository
             bool deletedStudent = false;
             try
             {
-                deletedStudent = FileManager.DeleteObject(studentId);
+                deletedStudent = fileManager.DeleteObject(studentId);
             }
             catch (ArgumentNullException e)
             {
@@ -159,13 +163,13 @@ namespace VuelingSchool.DataAccess.Repository
             Student updatedStudent = null;
             try
             {
-                Student prevStudent = FileManager.GetObjectById(studentId);
+                Student prevStudent = fileManager.GetObjectById(studentId);
                 if (prevStudent != null) {
                     prevStudent.StudentId = studentId;
                     prevStudent.Name = name;
                     prevStudent.Surname = surname;
                     prevStudent.Birthday = birthday;
-                    updatedStudent = FileManager.UpdateObject(prevStudent);
+                    updatedStudent = fileManager.UpdateObject(prevStudent);
                 }
             }
             catch (ArgumentNullException e)
