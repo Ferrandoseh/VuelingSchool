@@ -10,34 +10,34 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests
+namespace VuelingSchool.DataAccessTier.RepositoryJson.BehaviouralTests
 {
     using TechTalk.SpecFlow;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("StudentRepository", Description=@"	I want to store students properly
+    [TechTalk.SpecRun.FeatureAttribute("StudentRepositoryJsonManager", Description=@"	I want to store students properly
 	Add a Student and validate is readable later
 	Delete Student
 	Try to delete a Student it doesn't exist
 	Get a Student
 	Try to get a Student it doesn't exist
 	Update a Student
-	Try to update a Student it doesn't exist", SourceFile="StudentRepository.feature", SourceLine=0)]
-    public partial class StudentRepositoryFeature
+	Try to update a Student it doesn't exist", SourceFile="StudentRepositoryJsonManager.feature", SourceLine=0)]
+    public partial class StudentRepositoryJsonManagerFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "StudentRepository.feature"
+#line 1 "StudentRepositoryJsonManager.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "StudentRepository", @"	I want to store students properly
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "StudentRepositoryJsonManager", @"	I want to store students properly
 	Add a Student and validate is readable later
 	Delete Student
 	Try to delete a Student it doesn't exist

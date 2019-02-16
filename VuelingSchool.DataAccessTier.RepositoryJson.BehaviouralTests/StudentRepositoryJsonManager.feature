@@ -1,4 +1,4 @@
-﻿Feature: StudentRepository
+﻿Feature: StudentRepositoryJsonManager
 	I want to store students properly
 	Add a Student and validate is readable later
 	Delete Student

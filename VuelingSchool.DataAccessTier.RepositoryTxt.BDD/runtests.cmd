@@ -6,7 +6,7 @@
 	echo "MSBuild is not in your PATH. Please use a developer command prompt!"
 	goto :end
 ) ELSE (
-	MSBuild.exe "VuelingSchool.DataAccessTier.Repository.SpecFlow.BehaviouralTests.csproj"
+	MSBuild.exe "VuelingSchool.DataAccessTier.RepositoryTxt.BDD.csproj"
 )
 
 @if ERRORLEVEL 1 goto end

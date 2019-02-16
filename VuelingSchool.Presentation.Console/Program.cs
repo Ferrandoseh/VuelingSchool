@@ -59,7 +59,8 @@ namespace VuelingSchool.Presentation.Console
                 System.Console.WriteLine("\t 3. Get by id");
                 System.Console.WriteLine("\t 4. Update by id");
                 System.Console.WriteLine("\t 5. Delete by id");
-                System.Console.WriteLine("\t 0. Exit");
+                System.Console.WriteLine("\t 0. Back");
+                System.Console.WriteLine("\t X. Exit");
                 caseSwitch = System.Console.ReadLine();
                 System.Console.WriteLine("You entered '{0}'", caseSwitch);
                 
@@ -79,6 +80,9 @@ namespace VuelingSchool.Presentation.Console
                         break;
                     case "5":
                         DeleteStudent();
+                        break;
+                    case "0":
+                        SelectTypeFile();
                         break;
                     default:
                         Environment.Exit(0);

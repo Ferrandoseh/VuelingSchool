@@ -7,8 +7,8 @@ namespace VuelingSchool.DataAccess.Repository.Tests
     [TestClass()]
     public class StudentRepositoryTests
     {
-        readonly IStudentRepository iStudentRepository = new StudentRepository( FileManagerFactory.Instance.CreateFileManager("txt") );
-
+        readonly IStudentRepository iStudentRepository = new StudentRepository(FileManagerFactory.Instance.CreateFileManager("txt"));
+        
         [DataRow("it01", "Amancio", "Test", "23/07/1996")]
         [DataTestMethod()]
         public void AddStudentTest(string studentId,
@@ -26,7 +26,7 @@ namespace VuelingSchool.DataAccess.Repository.Tests
         {
             Student prevStudent = new Student(studentId, name, surname, birthday);
             iStudentRepository.AddNewStudent(prevStudent);
-            Assert.IsTrue( iStudentRepository.DeleteStudent(studentId) );
+            Assert.IsTrue(iStudentRepository.DeleteStudent(studentId));
         }
 
         [DataRow("it03")]
@@ -42,6 +42,7 @@ namespace VuelingSchool.DataAccess.Repository.Tests
            string name, string surname, string birthday)
         {
             Student prevStudent = new Student(studentId, name, surname, birthday);
+
             iStudentRepository.AddNewStudent(prevStudent);
             Assert.AreEqual(prevStudent, iStudentRepository.GetStudentById(studentId));
         }
