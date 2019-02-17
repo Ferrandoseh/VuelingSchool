@@ -44,8 +44,10 @@ namespace VuelingSchool.DataAccess.RepositoryXml.IntegrationTests
         {
             Student prevStudent = new Student(studentId, name, surname, birthday);
 
-            iStudentRepository.AddNewStudent(prevStudent);
-            Assert.AreEqual(prevStudent, iStudentRepository.GetStudentById(studentId));
+            Student studentGot1 = iStudentRepository.AddNewStudent(prevStudent);
+            Student studentGot = iStudentRepository.GetStudentById(studentId);
+
+            Assert.AreEqual(prevStudent, studentGot);
         }
 
         [DataRow("it05")]

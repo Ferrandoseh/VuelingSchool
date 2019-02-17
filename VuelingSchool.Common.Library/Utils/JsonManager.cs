@@ -12,21 +12,24 @@ namespace VuelingSchool.Common.Library.Utils
     {
         public override Student Add(Student o)
         {
-            if( !File.Exists(localPath)) { 
-                using (StreamWriter w = File.AppendText(localPath))
-                {
-                    w.WriteLine("[]");
-                }
-            }
+            if( !File.Exists(localPath))
+                CreateFile();
 
-            string jsonFile = File.ReadAllText(localPath);
-            List<Student> objects = JsonConvert.DeserializeObject<List<Student>>(jsonFile);
+            List<Student> objects = GetAll();
             objects.Add(o);
 
-            string newJson = JsonConvert.SerializeObject(objects);
+            string newJson = JsonConvert.SerializeObject(objects, Formatting.Indented);
             File.WriteAllText(localPath, newJson);
 
-            return o;
+            return GetLast();
+        }
+
+        private void CreateFile()
+        {
+            using (StreamWriter w = File.AppendText(localPath))
+            {
+                w.WriteLine("[]");
+            }
         }
 
         public override List<Student> GetAll()
