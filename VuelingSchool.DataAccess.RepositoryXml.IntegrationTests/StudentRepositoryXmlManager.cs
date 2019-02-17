@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VuelingSchool.Common.Library.Factory;
 using VuelingSchool.Common.Library.Models;
+using VuelingSchool.Common.Library.Utils;
 using VuelingSchool.DataAccess.Repository;
 
 namespace VuelingSchool.DataAccess.RepositoryXml.IntegrationTests
@@ -9,7 +10,7 @@ namespace VuelingSchool.DataAccess.RepositoryXml.IntegrationTests
     public class StudentRepositoryXmlManager
     {
         readonly IStudentRepository iStudentRepository = new StudentRepository(FileManagerFactory.Instance.CreateFileManager("xml"));
-
+        
         [DataRow("it01", "Amancio", "Test", "23/07/1996")]
         [DataTestMethod()]
         public void AddStudentTest(string studentId,
@@ -43,13 +44,11 @@ namespace VuelingSchool.DataAccess.RepositoryXml.IntegrationTests
            string name, string surname, string birthday)
         {
             Student prevStudent = new Student(studentId, name, surname, birthday);
-
-            Student studentGot1 = iStudentRepository.AddNewStudent(prevStudent);
+            iStudentRepository.AddNewStudent(prevStudent);
             Student studentGot = iStudentRepository.GetStudentById(studentId);
-
             Assert.AreEqual(prevStudent, studentGot);
         }
-
+        
         [DataRow("it05")]
         [DataTestMethod()]
         public void GetStudentByIdWhenDoesNotExistAnyTest(string studentId)

@@ -40,7 +40,7 @@ namespace VuelingSchool.Common.Library.Utils
             return GetLast();
         }
 
-        private void CreateFile()
+        public void CreateFile()
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml("<root></root>");
@@ -91,9 +91,7 @@ namespace VuelingSchool.Common.Library.Utils
                 {
                     Student currentObject = (Student)deserializer.Deserialize(xmlReader);
                     if(currentObject.StudentId.Equals(id) )
-                    {
-                        o = currentObject; 
-                    }
+                        o = currentObject;
                 } while (xmlReader.ReadToNextSibling(className) && o == null);
             }
             return o;
@@ -101,7 +99,27 @@ namespace VuelingSchool.Common.Library.Utils
 
         public override Student UpdateObject(Student o)
         {
-            throw new NotImplementedException();
+            Student studentGot = null;
+            XDocument xDoc = XDocument.Load(localPath);
+            var element = xDoc.Elements("root").Elements("Student");
+            foreach (var objectXml in element)
+            {
+                var currentId = objectXml.Elements("StudentId").Single();
+                if (currentId.Value == o.StudentId)
+                {
+                    var sGuid = objectXml.Elements("SGuid").Single();
+                    var name = objectXml.Elements("Name").Single();
+                    var surname = objectXml.Elements("Surname").Single();
+                    var birthday = objectXml.Elements("Birthday").Single();
+                    name.Value = o.Name;
+                    surname.Value = o.Surname;
+                    birthday.Value = o.Birthday;
+                    studentGot = o;
+                    studentGot.SGuid = new Guid(sGuid.Value);
+                }
+            }
+            xDoc.Save(localPath);
+            return studentGot;
         }
 
         public override void ComputeFilePath()
