@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VuelingSchool.Common.Library.Factory;
 using VuelingSchool.Common.Library.Models;
+using VuelingSchool.Common.Library.Utils;
 using VuelingSchool.DataAccess.Repository;
 
 namespace VuelingSchool.DataAccess.RepositoryJsonIntegrationTests
@@ -11,8 +12,16 @@ namespace VuelingSchool.DataAccess.RepositoryJsonIntegrationTests
         [TestClass()]
         public class StudentRepositoryTests
         {
-            readonly IStudentRepository iStudentRepository = new StudentRepository(FileManagerFactory.Instance.CreateFileManager("json"));
-            
+            JsonManager JsonManager;
+            IStudentRepository iStudentRepository;
+            [TestInitialize]
+            public void TestInitialize()
+            {
+                JsonManager = new JsonManager();
+                iStudentRepository = new StudentRepository(JsonManager);
+                JsonManager.CreateFile();
+            }
+
             [DataRow("it01", "Amancio", "Test", "23/07/1996")]
             [DataTestMethod()]
             public void AddStudentTest(string studentId,

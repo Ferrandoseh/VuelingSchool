@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using System.Xml.XPath;
 using VuelingSchool.Common.Library.Models;
 
 namespace VuelingSchool.Common.Library.Utils
@@ -17,9 +14,6 @@ namespace VuelingSchool.Common.Library.Utils
     {
         public override Student Add(Student o)
         {
-            if (!File.Exists(localPath))
-                CreateFile();
-
             XmlDocument doc = new XmlDocument();
             doc.Load(localPath);
             var rootNode = doc.GetElementsByTagName("root")[0];
@@ -38,18 +32,7 @@ namespace VuelingSchool.Common.Library.Utils
             doc.Save(localPath);
 
             return GetLast();
-        }
-
-        public void CreateFile()
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml("<root></root>");
-            using (XmlTextWriter writer = new XmlTextWriter(localPath, Encoding.UTF8))
-            {
-                writer.Formatting = Formatting.Indented;
-                doc.Save(writer);
-            }
-        }
+        }        
 
         public override List<Student> GetAll()
         {
@@ -59,17 +42,32 @@ namespace VuelingSchool.Common.Library.Utils
             using (var xmlReader = XmlReader.Create(localPath))
             {
                 String className = typeof(Student).Name;
-                xmlReader.ReadToFollowing(className);
-                do
-                {
-                    objects.Add( (Student)deserializer.Deserialize(xmlReader) );
-                } while (xmlReader.ReadToNextSibling(className));
+                bool found = xmlReader.ReadToFollowing(className);
+                if(found) { 
+                    do
+                    {
+                        objects.Add( (Student)deserializer.Deserialize(xmlReader) );
+                    } while (xmlReader.ReadToNextSibling(className));
+                }
             }
             return objects;
         }
         public override bool DeleteObject(string id)
         {
-            throw new NotImplementedException();
+            bool deleted = false;
+            XDocument xDoc = XDocument.Load(localPath);
+            var element = xDoc.Elements("root").Elements("Student");
+            foreach (var objectXml in element)
+            {
+                var currentId = objectXml.Elements("StudentId").Single();
+                if (currentId.Value == id)
+                {
+                    objectXml.Remove();
+                    deleted = true;
+                }
+            }
+            xDoc.Save(localPath);
+            return deleted;
         }
 
         public override Student GetLast()
@@ -90,7 +88,7 @@ namespace VuelingSchool.Common.Library.Utils
                 do
                 {
                     Student currentObject = (Student)deserializer.Deserialize(xmlReader);
-                    if(currentObject.StudentId.Equals(id) )
+                    if(currentObject != null && currentObject.StudentId.Equals(id) )
                         o = currentObject;
                 } while (xmlReader.ReadToNextSibling(className) && o == null);
             }
@@ -127,6 +125,19 @@ namespace VuelingSchool.Common.Library.Utils
             localPath = !string.IsNullOrEmpty(environmentPath) ?
                environmentPath : repositoryPath;
             localPath = String.Concat(localPath, "xml");
+
+            if (!File.Exists(localPath))
+                CreateFile();
+        }
+        public void CreateFile()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<root></root>");
+            using (XmlTextWriter writer = new XmlTextWriter(localPath, Encoding.UTF8))
+            {
+                writer.Formatting = Formatting.Indented;
+                doc.Save(writer);
+            }
         }
     }
 }

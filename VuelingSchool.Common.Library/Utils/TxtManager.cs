@@ -301,6 +301,15 @@ namespace VuelingSchool.Common.Library.Utils
             localPath = !string.IsNullOrEmpty(environmentPath) ?
                environmentPath : repositoryPath;
             localPath = String.Concat(localPath, "txt");
+        
+            if (!File.Exists(localPath))
+                CreateFile();
+        }
+        private void CreateFile()
+        {
+            StreamWriter w = File.CreateText(localPath);
+            w.Close();
+            w.Dispose();
         }
     }    
 }

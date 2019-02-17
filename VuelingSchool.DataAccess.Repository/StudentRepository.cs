@@ -51,7 +51,7 @@ namespace VuelingSchool.DataAccess.Repository
         }
         public List<Student> GetAllStudents()
         {
-            List<Student> studentList = null;
+            List<Student> studentList;
             try
             {
                 studentList = fileManager.GetAll();

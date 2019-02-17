@@ -9,8 +9,16 @@ namespace VuelingSchool.DataAccess.RepositoryXml.IntegrationTests
     [TestClass()]
     public class StudentRepositoryXmlManager
     {
-        readonly IStudentRepository iStudentRepository = new StudentRepository(FileManagerFactory.Instance.CreateFileManager("xml"));
-        
+        XmlManager xmlManager;
+        IStudentRepository iStudentRepository;
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            xmlManager = new XmlManager();
+            iStudentRepository = new StudentRepository(xmlManager);
+            xmlManager.CreateFile();
+        }
+
         [DataRow("it01", "Amancio", "Test", "23/07/1996")]
         [DataTestMethod()]
         public void AddStudentTest(string studentId,
@@ -43,6 +51,7 @@ namespace VuelingSchool.DataAccess.RepositoryXml.IntegrationTests
         public void GetStudentByIdTest(string studentId,
            string name, string surname, string birthday)
         {
+
             Student prevStudent = new Student(studentId, name, surname, birthday);
             iStudentRepository.AddNewStudent(prevStudent);
             Student studentGot = iStudentRepository.GetStudentById(studentId);
@@ -53,7 +62,8 @@ namespace VuelingSchool.DataAccess.RepositoryXml.IntegrationTests
         [DataTestMethod()]
         public void GetStudentByIdWhenDoesNotExistAnyTest(string studentId)
         {
-            Assert.IsNull(iStudentRepository.GetStudentById(studentId));
+            Student studentGot = iStudentRepository.GetStudentById(studentId);
+            Assert.IsNull(studentGot);
         }
 
         [DataRow("it06", "Carmen", "Test", "23/07/1996", "Elena")]

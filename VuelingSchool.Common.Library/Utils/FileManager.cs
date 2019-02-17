@@ -27,5 +27,6 @@ namespace VuelingSchool.Common.Library.Utils
         public abstract Student GetObjectById(string id);
         public abstract bool DeleteObject(string id);
         public abstract Student UpdateObject(Student o);
+        
     }
 }

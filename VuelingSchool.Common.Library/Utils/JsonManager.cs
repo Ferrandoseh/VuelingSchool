@@ -12,9 +12,6 @@ namespace VuelingSchool.Common.Library.Utils
     {
         public override Student Add(Student o)
         {
-            if( !File.Exists(localPath))
-                CreateFile();
-
             List<Student> objects = GetAll();
             objects.Add(o);
 
@@ -24,13 +21,6 @@ namespace VuelingSchool.Common.Library.Utils
             return GetLast();
         }
 
-        private void CreateFile()
-        {
-            using (StreamWriter w = File.AppendText(localPath))
-            {
-                w.WriteLine("[]");
-            }
-        }
 
         public override List<Student> GetAll()
         {
@@ -98,6 +88,16 @@ namespace VuelingSchool.Common.Library.Utils
             localPath = !string.IsNullOrEmpty(environmentPath) ?
                environmentPath : repositoryPath;
             localPath = String.Concat(localPath, "json");
+
+            if (!File.Exists(localPath))
+                CreateFile();
+        }
+        public void CreateFile()
+        {
+            using (StreamWriter w = File.CreateText(localPath))
+            {
+                w.WriteLine("[]");
+            }
         }
     }
 }
