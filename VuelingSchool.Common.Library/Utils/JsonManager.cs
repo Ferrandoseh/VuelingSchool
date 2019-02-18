@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using VuelingSchool.Common.Library.Models;
 
 namespace VuelingSchool.Common.Library.Utils
@@ -20,15 +18,28 @@ namespace VuelingSchool.Common.Library.Utils
 
             return GetLast();
         }
-
-
         public override List<Student> GetAll()
         {
             string json = File.ReadAllText(localPath);
             List<Student> objects = JsonConvert.DeserializeObject<List<Student>>(json);
             return objects;
         }
-
+        public override Student GetLast()
+        {
+            List<Student> lines = GetAll();
+            return lines[lines.Count - 1];
+        }
+        public override Student GetObjectById(string id)
+        {
+            Student o = null;
+            List<Student> objects = GetAll();
+            foreach (Student lineObject in objects )
+            {
+                if (lineObject.StudentId.Equals(id))
+                    o = lineObject;
+            }
+            return o;
+        }
         public override bool DeleteObject(string id)
         {
             bool deleted = false;
@@ -45,25 +56,6 @@ namespace VuelingSchool.Common.Library.Utils
             File.WriteAllText(localPath, result);
             return deleted;
         }
-
-        public override Student GetLast()
-        {
-            List<Student> lines = GetAll();
-            return lines[lines.Count - 1];
-        }
-
-        public override Student GetObjectById(string id)
-        {
-            Student o = null;
-            List<Student> objects = GetAll();
-            foreach (Student lineObject in objects )
-            {
-                if (lineObject.StudentId.Equals(id))
-                    o = lineObject;
-            }
-            return o;
-        }
-
         public override Student UpdateObject(Student o)
         {
             Student updated = null;
@@ -88,11 +80,8 @@ namespace VuelingSchool.Common.Library.Utils
             localPath = !string.IsNullOrEmpty(environmentPath) ?
                environmentPath : repositoryPath;
             localPath = String.Concat(localPath, "json");
-
-            if (!File.Exists(localPath))
-                CreateFile();
         }
-        public void CreateFile()
+        public override void CreateFile()
         {
             using (StreamWriter w = File.CreateText(localPath))
             {

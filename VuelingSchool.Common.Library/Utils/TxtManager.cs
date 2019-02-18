@@ -49,6 +49,47 @@ namespace VuelingSchool.Common.Library.Utils
             }
             return GetLast();
         }
+        public override List<Student> GetAll()
+        {
+            List<Student> objects = new List<Student>();
+            string line = "";
+            try
+            {
+                using (StreamReader sr = new StreamReader(localPath))
+                {
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        objects.Add(Student.ToObject(line));
+                    }
+                }
+            }
+            catch (ArgumentNullException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (ArgumentException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (FileNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            catch (IOException e)
+            {
+                log.Error(e.Message);
+                throw;
+            }
+            return objects;
+        }
         public override Student GetLast()
         {
             List<Student> lines = null;
@@ -83,7 +124,6 @@ namespace VuelingSchool.Common.Library.Utils
             }
             return lines[lines.Count - 1];            
         }
-
         public override Student GetObjectById(string id)
         {
             Student o = null;
@@ -127,7 +167,6 @@ namespace VuelingSchool.Common.Library.Utils
             }
             return o;
         }
-
         public override bool DeleteObject(string id)
         {
             bool found = false;
@@ -187,7 +226,6 @@ namespace VuelingSchool.Common.Library.Utils
             }
             return found;
         }
-
         public override Student UpdateObject(Student o)
         {
             Student updated = null;
@@ -253,59 +291,13 @@ namespace VuelingSchool.Common.Library.Utils
             }
             return updated;
         }
-
-        public override List<Student> GetAll()
-        {
-            List<Student> objects = new List<Student>();
-            string line = "";
-            try
-            {
-                using (StreamReader sr = new StreamReader(localPath))
-                {
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        objects.Add( Student.ToObject(line) );
-                    }
-                }
-            }
-            catch (ArgumentNullException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            catch (ArgumentException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            catch (FileNotFoundException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            catch (DirectoryNotFoundException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            catch (IOException e)
-            {
-                log.Error(e.Message);
-                throw;
-            }
-            return objects;
-        }
-
         public override void ComputeFilePath()
         {
             localPath = !string.IsNullOrEmpty(environmentPath) ?
                environmentPath : repositoryPath;
             localPath = String.Concat(localPath, "txt");
-        
-            if (!File.Exists(localPath))
-                CreateFile();
         }
-        private void CreateFile()
+        public override void CreateFile()
         {
             StreamWriter w = File.CreateText(localPath);
             w.Close();

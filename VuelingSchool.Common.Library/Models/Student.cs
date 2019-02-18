@@ -15,7 +15,10 @@ namespace VuelingSchool.Common.Library.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Birthday { get; set; }
-
+        public Student()
+        {
+            this.SGuid = Guid.NewGuid();
+        }
         public Student(string StudentId, string Name, string Surname, string Birthday)
         {
             this.SGuid = Guid.NewGuid();
@@ -24,10 +27,7 @@ namespace VuelingSchool.Common.Library.Models
             this.Surname = Surname;
             this.Birthday = Birthday;
         }
-        public Student()
-        {
-            this.SGuid = Guid.NewGuid();
-        }
+        
         public static Student ToObject(string line)
         {
             var expression = new Regex(

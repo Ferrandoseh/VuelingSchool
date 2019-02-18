@@ -283,7 +283,6 @@ namespace VuelingSchool.Presentation.Console
                 throw;
             }
         }
-
         private static void InputStudentParams(out string StudentId, out string Name, out string Surname, out string Birthday)
         {
             System.Console.Write("\tType the StudentId: ");

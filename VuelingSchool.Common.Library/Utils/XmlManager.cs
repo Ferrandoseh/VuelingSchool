@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -32,8 +31,7 @@ namespace VuelingSchool.Common.Library.Utils
             doc.Save(localPath);
 
             return GetLast();
-        }        
-
+        }
         public override List<Student> GetAll()
         {
             List<Student> objects = new List<Student>();
@@ -52,30 +50,11 @@ namespace VuelingSchool.Common.Library.Utils
             }
             return objects;
         }
-        public override bool DeleteObject(string id)
-        {
-            bool deleted = false;
-            XDocument xDoc = XDocument.Load(localPath);
-            var element = xDoc.Elements("root").Elements("Student");
-            foreach (var objectXml in element)
-            {
-                var currentId = objectXml.Elements("StudentId").Single();
-                if (currentId.Value == id)
-                {
-                    objectXml.Remove();
-                    deleted = true;
-                }
-            }
-            xDoc.Save(localPath);
-            return deleted;
-        }
-
         public override Student GetLast()
         {
             List<Student> objects = GetAll();
             return objects[objects.Count-1];
         }
-
         public override Student GetObjectById(string id)
         {
             Student o = null;
@@ -94,7 +73,23 @@ namespace VuelingSchool.Common.Library.Utils
             }
             return o;
         }
-
+        public override bool DeleteObject(string id)
+        {
+            bool deleted = false;
+            XDocument xDoc = XDocument.Load(localPath);
+            var element = xDoc.Elements("root").Elements("Student");
+            foreach (var objectXml in element)
+            {
+                var currentId = objectXml.Elements("StudentId").Single();
+                if (currentId.Value == id)
+                {
+                    objectXml.Remove();
+                    deleted = true;
+                }
+            }
+            xDoc.Save(localPath);
+            return deleted;
+        }
         public override Student UpdateObject(Student o)
         {
             Student studentGot = null;
@@ -119,17 +114,13 @@ namespace VuelingSchool.Common.Library.Utils
             xDoc.Save(localPath);
             return studentGot;
         }
-
         public override void ComputeFilePath()
         {
             localPath = !string.IsNullOrEmpty(environmentPath) ?
                environmentPath : repositoryPath;
             localPath = String.Concat(localPath, "xml");
-
-            if (!File.Exists(localPath))
-                CreateFile();
         }
-        public void CreateFile()
+        public override void CreateFile()
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml("<root></root>");
