@@ -1,14 +1,14 @@
-﻿using VuelingSchool.Common.Library.Utils;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Xml.Linq;
+using VuelingSchool.Common.Library.Utils;
 
 namespace VuelingSchool.Common.Library.Factory
 {
     public class FileManagerFactory : AbstractManagerFactory
     {
-        private FileManager FileManager;
-        private FileManagerFactory()
-        {
-        }
-
         public static FileManagerFactory Instance
         {
             get
@@ -21,19 +21,17 @@ namespace VuelingSchool.Common.Library.Factory
 
         public override FileManager CreateFileManager(string fileType)
         {
-            switch (fileType)
-            {
-                case "txt":
-                    FileManager = new TxtManager();
-                    break;
-                case "xml":
-                    FileManager = new XmlManager();
-                    break;
-                case "json":
-                    FileManager = new JsonManager();
-                    break;
-            }
-            return FileManager;
+            XElement root = XElement.Load("./FileManagerReflection.xml");
+            IEnumerable<XElement> query =
+                from element in root.Elements("Type")
+                where (string)element.Attribute("Id") == fileType
+                select element;
+
+            string className = query.First().Value;
+            Assembly myAssembly = typeof(FileManager).Assembly;
+            Type classType = myAssembly.GetType(className);
+            
+            return (FileManager)Activator.CreateInstance(classType);
         }
     }
 }
