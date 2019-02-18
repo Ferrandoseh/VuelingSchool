@@ -14,10 +14,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessTier", "DataAccessTier", "{6F66AD33-73BB-47BC-B94A-AC92B068C8D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonTier", "CommonTier", "{1551C992-3FA7-44EA-81B1-5D9476F1B41F}"
-	ProjectSection(SolutionItems) = preProject
-		VuelingSchool.Common.Library\log4net.config = VuelingSchool.Common.Library\log4net.config
-		VuelingSchool.Common.Library\packages.config = VuelingSchool.Common.Library\packages.config
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingSchool.DataAccess.RepositoryUnitTests", "VuelingSchool.DataAccess.RepositoryUnitTests\VuelingSchool.DataAccess.RepositoryUnitTests.csproj", "{F3BE7B2A-0C0F-4C64-8D6C-91981973B7D6}"
 EndProject

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using VuelingSchool.Common.Library.Factory;
 using VuelingSchool.Common.Library.Models;
-using VuelingSchool.Common.Library.Utils;
 using VuelingSchool.DataAccess.Repository;
 
 namespace VuelingSchool.Presentation.Console
