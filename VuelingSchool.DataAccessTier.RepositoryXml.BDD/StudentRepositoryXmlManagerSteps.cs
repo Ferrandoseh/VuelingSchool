@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
-using VuelingSchool.Common.Library.Factory;
 using VuelingSchool.Common.Library.Models;
+using VuelingSchool.Common.Library.Utils;
 using VuelingSchool.DataAccess.Repository;
 
 namespace VuelingSchool.DataAccessTier.RepositoryXml.BehaviouralTests
@@ -9,7 +9,7 @@ namespace VuelingSchool.DataAccessTier.RepositoryXml.BehaviouralTests
     [Binding]
     public class StudentRepositoryXmlManagerSteps
     {
-        private readonly IStudentRepository studentRepository = new StudentRepository(FileManagerFactory.Instance.CreateFileManager("xml"));
+        private readonly IStudentRepository studentRepository = new StudentRepository( new XmlManager() );
         private Student prevStudent, studentGot;
         string studentId;
         private bool result;

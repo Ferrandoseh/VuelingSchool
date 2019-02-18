@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
-using VuelingSchool.Common.Library.Factory;
 using VuelingSchool.Common.Library.Models;
+using VuelingSchool.Common.Library.Utils;
 using VuelingSchool.DataAccess.Repository;
 
 namespace VuelingSchool.DataAccessTier.RepositoryJson.BehaviouralTests
@@ -9,7 +9,7 @@ namespace VuelingSchool.DataAccessTier.RepositoryJson.BehaviouralTests
     [Binding]
     public class StudentRepositoryJsonManagerSteps
     {
-        private readonly IStudentRepository studentRepository = new StudentRepository(FileManagerFactory.Instance.CreateFileManager("json"));
+        private readonly IStudentRepository studentRepository = new StudentRepository (new JsonManager() );
         private Student prevStudent, studentGot;
         string studentId;
         private bool result;

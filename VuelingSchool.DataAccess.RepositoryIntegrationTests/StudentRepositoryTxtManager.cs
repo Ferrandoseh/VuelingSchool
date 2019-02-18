@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using VuelingSchool.Common.Library.Factory;
 using VuelingSchool.Common.Library.Models;
+using VuelingSchool.Common.Library.Utils;
 
 namespace VuelingSchool.DataAccess.Repository.Tests
 {
     [TestClass()]
     public class StudentRepositoryTests
     {
-        readonly IStudentRepository iStudentRepository = new StudentRepository(FileManagerFactory.Instance.CreateFileManager("txt"));
+        readonly IStudentRepository iStudentRepository = new StudentRepository( new TxtManager() );
         
         [DataRow("it01", "Amancio", "Test", "23/07/1996")]
         [DataTestMethod()]
