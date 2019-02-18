@@ -9,6 +9,14 @@ namespace VuelingSchool.Common.Library.Factory
 {
     public class FileManagerFactory : AbstractManagerFactory
     {
+        /// <summary>
+        /// Get Instance method
+        /// Method to get the current instance of the FileManagerFactory
+        /// </summary>
+        /// <returns>
+        /// Returns the instance of the AbstractManagerFactory already if it is
+        /// already instantiated. Otherwise it creates it before returning it.
+        /// </returns>
         public static FileManagerFactory Instance
         {
             get
@@ -27,10 +35,21 @@ namespace VuelingSchool.Common.Library.Factory
                 where (string)element.Attribute("Id") == fileType
                 select element;
 
-            string className = query.First().Value;
+            string className;
+
+            try
+            {
+                className = query.First().Value;
+            }
+            catch(ArgumentNullException e)
+            {
+                Log.Error(e);
+                throw;
+            }
+
             Assembly myAssembly = typeof(FileManager).Assembly;
             Type classType = myAssembly.GetType(className);
-            
+
             return (FileManager)Activator.CreateInstance(classType);
         }
     }

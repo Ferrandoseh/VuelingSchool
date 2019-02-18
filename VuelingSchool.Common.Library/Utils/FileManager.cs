@@ -18,7 +18,7 @@ namespace VuelingSchool.Common.Library.Utils
         protected static readonly string environmentPath = Environment.GetEnvironmentVariable("localPath",
             EnvironmentVariableTarget.User);
         protected string localPath;
-        protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(
+        protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
@@ -36,10 +36,18 @@ namespace VuelingSchool.Common.Library.Utils
         /// <summary>
         /// Adds a new object into the file.
         /// </summary>
+        /// <param name="o"> The object we want to format and add into the file.</param>
         /// <returns>
         /// Return the student is just written reading it after the insertion.
         /// </returns>
-        /// <param name="o"> The object we want to format and add into the file.</param>
+        /// <exception cref = "System.UnauthorizedAccessException"></exception>
+        /// <exception cref = "System.ArgumentNullException"></exception>
+        /// <exception cref = "System.ArgumentException"></exception>
+        /// <exception cref = "System.PathTooLongException"> </exception>
+        /// <exception cref = "System.DirectoryNotFoundException"></exception>
+        /// <exception cref = "System.NotSupportedException"></exception>
+        /// <exception cref = "System.IOException"></exception>
+        /// <exception cref = "System.SecurityException" ></exception>
         public abstract Student Add(Student o);
         /// <summary>
         /// Gets the content of the file.
@@ -48,10 +56,15 @@ namespace VuelingSchool.Common.Library.Utils
         /// Returns a List<Student> if there are elements into the file, otherwise it
         /// returns null
         /// </returns>
-        /// /// <seealso cref="System.String">
-        /// Reads the file moving all its objects into a List that will be 
-        /// returned once its filled up with the file information.
-        /// </seealso>
+        /// <param name="o"> The object we want to format and add into the file.</param>
+        /// <exception cref = "System.UnauthorizedAccessException"></exception>
+        /// <exception cref = "System.ArgumentNullException"></exception>
+        /// <exception cref = "System.ArgumentException"></exception>
+        /// <exception cref = "System.PathTooLongException"> </exception>
+        /// <exception cref = "System.DirectoryNotFoundException"></exception>
+        /// <exception cref = "System.NotSupportedException"></exception>
+        /// <exception cref = "System.IOException"></exception>
+        /// <exception cref = "System.SecurityException" ></exception>
         public abstract List<Student> GetAll();
         /// <summary>
         /// Gets the last element of the file.
@@ -63,18 +76,36 @@ namespace VuelingSchool.Common.Library.Utils
         /// /// <seealso cref="System.String">
         /// Reads the file returning just its last object.
         /// </seealso>
+        /// <param name="o"> The object we want to format and add into the file.</param>
+        /// <exception cref = "System.UnauthorizedAccessException"></exception>
+        /// <exception cref = "System.ArgumentNullException"></exception>
+        /// <exception cref = "System.ArgumentException"></exception>
+        /// <exception cref = "System.PathTooLongException"> </exception>
+        /// <exception cref = "System.DirectoryNotFoundException"></exception>
+        /// <exception cref = "System.NotSupportedException"></exception>
+        /// <exception cref = "System.IOException"></exception>
+        /// <exception cref = "System.SecurityException" ></exception>
         public abstract Student GetLast();
         /// <summary>
         /// Gets the element of the file that matches the entry parameter.
         /// </summary>
         /// <param name="id"> The id we want the object found has as an attribute.</param>
         /// <returns>
-        /// Returns the last object found.
+        /// Returns the object found.
         /// If there is none then returns null.
         /// </returns>
         /// /// <seealso cref="System.String">
         /// Reads the file returning just the object with the entry parameter as its id.
         /// </seealso>
+        /// <param name="o"> The object we want to format and add into the file.</param>
+        /// <exception cref = "System.UnauthorizedAccessException"></exception>
+        /// <exception cref = "System.ArgumentNullException"></exception>
+        /// <exception cref = "System.ArgumentException"></exception>
+        /// <exception cref = "System.PathTooLongException"> </exception>
+        /// <exception cref = "System.DirectoryNotFoundException"></exception>
+        /// <exception cref = "System.NotSupportedException"></exception>
+        /// <exception cref = "System.IOException"></exception>
+        /// <exception cref = "System.SecurityException" ></exception>
         public abstract Student GetObjectById(string id);
         /// <summary>
         /// Deletes an object from the file
@@ -84,6 +115,15 @@ namespace VuelingSchool.Common.Library.Utils
         /// Returns true if the object to be deleted was found.
         /// Otherwise returns false.
         /// </returns>
+        /// <param name="o"> The object we want to format and add into the file.</param>
+        /// <exception cref = "System.UnauthorizedAccessException"></exception>
+        /// <exception cref = "System.ArgumentNullException"></exception>
+        /// <exception cref = "System.ArgumentException"></exception>
+        /// <exception cref = "System.PathTooLongException"> </exception>
+        /// <exception cref = "System.DirectoryNotFoundException"></exception>
+        /// <exception cref = "System.NotSupportedException"></exception>
+        /// <exception cref = "System.IOException"></exception>
+        /// <exception cref = "System.SecurityException" ></exception>
         public abstract bool DeleteObject(string id);
         /// <summary>
         /// Updates an element from the file.
@@ -100,7 +140,16 @@ namespace VuelingSchool.Common.Library.Utils
         /// The other parameters of the input object will be the next params for the object
         /// To be modified.
         /// </seealso>
-        public abstract Student UpdateObject(Student o);        
+        /// <param name="o"> The object we want to format and add into the file.</param>
+        /// <exception cref = "System.UnauthorizedAccessException"></exception>
+        /// <exception cref = "System.ArgumentNullException"></exception>
+        /// <exception cref = "System.ArgumentException"></exception>
+        /// <exception cref = "System.PathTooLongException"> </exception>
+        /// <exception cref = "System.DirectoryNotFoundException"></exception>
+        /// <exception cref = "System.NotSupportedException"></exception>
+        /// <exception cref = "System.IOException"></exception>
+        /// <exception cref = "System.SecurityException" ></exception>
+        public abstract Student UpdateObject(Student o);
         /// <summary>
         /// Creates the path that belongs to the file to work on.
         /// </summary>

@@ -19,32 +19,32 @@ namespace VuelingSchool.Common.Library.Utils
             }
             catch (UnauthorizedAccessException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (ArgumentNullException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (ArgumentException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (PathTooLongException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (DirectoryNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (NotSupportedException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             return GetLast();
@@ -65,27 +65,27 @@ namespace VuelingSchool.Common.Library.Utils
             }
             catch (ArgumentNullException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (ArgumentException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (FileNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (DirectoryNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (IOException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             return objects;
@@ -99,27 +99,27 @@ namespace VuelingSchool.Common.Library.Utils
             }
             catch (ArgumentNullException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (ArgumentException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (FileNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (DirectoryNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (IOException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             return lines[lines.Count - 1];            
@@ -142,27 +142,27 @@ namespace VuelingSchool.Common.Library.Utils
             }
             catch (ArgumentNullException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (ArgumentException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (FileNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (DirectoryNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (IOException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             return o;
@@ -201,27 +201,27 @@ namespace VuelingSchool.Common.Library.Utils
             }
             catch (ArgumentNullException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (ArgumentException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (FileNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (DirectoryNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (IOException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             return found;
@@ -266,27 +266,27 @@ namespace VuelingSchool.Common.Library.Utils
             }
             catch (ArgumentNullException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (ArgumentException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (FileNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (DirectoryNotFoundException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             catch (IOException e)
             {
-                log.Error(e.Message);
+                Log.Error(e.Message);
                 throw;
             }
             return updated;
@@ -299,9 +299,7 @@ namespace VuelingSchool.Common.Library.Utils
         }
         public override void CreateFile()
         {
-            StreamWriter w = File.CreateText(localPath);
-            w.Close();
-            w.Dispose();
+            using (StreamWriter w = File.CreateText(localPath));
         }
     }    
 }
