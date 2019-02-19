@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Provinces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Province>A Coruña</Province>
+  <Province>Álava</Province>
+  <Province>Albacete</Province>
+  <Province>Alicante</Province>
+  <Province>Almería</Province>
+  <Province>Asturias</Province>
+  <Province>Ávila</Province>
+  <Province>Badajoz</Province>
+  <Province>Baleares</Province>
+  <Province>Barcelona</Province>
+  <Province>Burgos</Province>
+  <Province>Cáceres</Province>
+  <Province>Cádiz</Province>
+  <Province>Cantabria</Province>
+  <Province>Castellón</Province>
+  <Province>Ciudad Real</Province>
+  <Province>Córdoba</Province>
+  <Province>Cuenca</Province>
+  <Province>Girona</Province>
+  <Province>Granada</Province>
+  <Province>Guadalajara</Province>
+  <Province>Gipuzkoa</Province>
+  <Province>Huelva</Province>
+  <Province>Huesca</Province>
+  <Province>Jaén</Province>
+  <Province>La Rioja</Province>
+  <Province>Las Palmas</Province>
+  <Province>León</Province>
+  <Province>Lérida</Province>
+  <Province>Lugo</Province>
+  <Province>Madrid</Province>
+  <Province>Málaga</Province>
+  <Province>Murcia</Province>
+  <Province>Navarra</Province>
+  <Province>Ourense</Province>
+  <Province>Palencia</Province>
+  <Province>Pontevedra</Province>
+  <Province>Salamanca</Province>
+  <Province>Segovia</Province>
+  <Province>Sevilla</Province>
+  <Province>Soria</Province>
+  <Province>Tarragona</Province>
+  <Province>Santa Cruz de Tenerife</Province>
+  <Province>Teruel</Province>
+  <Province>Toledo</Province>
+  <Province>Valencia</Province>
+  <Province>Valladolid</Province>
+  <Province>Vizcaya</Province>
+  <Province>Zamora</Province>
+  <Province>Zaragoza</Province>
+</Provinces>

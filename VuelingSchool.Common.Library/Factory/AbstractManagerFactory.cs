@@ -7,6 +7,8 @@ namespace VuelingSchool.Common.Library.Factory
     /// </summary>
     public abstract class AbstractManagerFactory
     {
+        protected static FileManagerFactory managerFactory;
+
         protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
