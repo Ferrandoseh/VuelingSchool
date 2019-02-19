@@ -19,7 +19,7 @@ namespace VuelingSchool.Common.Library.Utils
             var nav = rootNode.CreateNavigator();
             var emptyNamepsaces = new XmlSerializerNamespaces(new[] {
                XmlQualifiedName.Empty
-           });
+            });
 
             using (var writer = nav.AppendChild())
             {

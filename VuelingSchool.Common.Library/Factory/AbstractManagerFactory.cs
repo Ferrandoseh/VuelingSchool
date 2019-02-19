@@ -3,14 +3,12 @@
 namespace VuelingSchool.Common.Library.Factory
 {   
     /// <summary>  
-    ///  This class generates factories, following the AbstractFactory Pattern
+    ///  This class generates factories, following the Abstract Factory Pattern
     /// </summary>
     public abstract class AbstractManagerFactory
     {
         protected static readonly log4net.ILog Log = log4net.LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        protected static AbstractManagerFactory managerFactory;
 
         /// <summary>
         /// Creates FileManager Factory
