@@ -28,49 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.provincesComboBox = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btAdd = new System.Windows.Forms.Button();
+            this.cbProvinces = new System.Windows.Forms.ComboBox();
+            this.btUpdate = new System.Windows.Forms.Button();
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
+            this.cbFileType = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // btAdd
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 132);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(801, 318);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.btAdd.Location = new System.Drawing.Point(24, 386);
+            this.btAdd.Name = "btAdd";
+            this.btAdd.Size = new System.Drawing.Size(317, 52);
+            this.btAdd.TabIndex = 0;
+            this.btAdd.Text = "ADD";
+            this.btAdd.UseVisualStyleBackColor = true;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
-            // provincesComboBox
+            // cbProvinces
             // 
-            this.provincesComboBox.FormattingEnabled = true;
-            this.provincesComboBox.Location = new System.Drawing.Point(12, 12);
-            this.provincesComboBox.Name = "provincesComboBox";
-            this.provincesComboBox.Size = new System.Drawing.Size(350, 24);
-            this.provincesComboBox.TabIndex = 1;
-            this.provincesComboBox.SelectedIndexChanged += new System.EventHandler(this.provincesCom_SelectedIndexChanged);
+            this.cbProvinces.FormattingEnabled = true;
+            this.cbProvinces.Location = new System.Drawing.Point(316, 13);
+            this.cbProvinces.Name = "cbProvinces";
+            this.cbProvinces.Size = new System.Drawing.Size(432, 24);
+            this.cbProvinces.TabIndex = 1;
+            // 
+            // btUpdate
+            // 
+            this.btUpdate.Location = new System.Drawing.Point(431, 386);
+            this.btUpdate.Name = "btUpdate";
+            this.btUpdate.Size = new System.Drawing.Size(317, 52);
+            this.btUpdate.TabIndex = 2;
+            this.btUpdate.Text = "UPDATE";
+            this.btUpdate.UseVisualStyleBackColor = true;
+            // 
+            // dgvStudents
+            // 
+            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudents.Location = new System.Drawing.Point(26, 42);
+            this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.RowTemplate.Height = 24;
+            this.dgvStudents.Size = new System.Drawing.Size(722, 338);
+            this.dgvStudents.TabIndex = 3;
+            // 
+            // cbFileType
+            // 
+            this.cbFileType.FormattingEnabled = true;
+            this.cbFileType.Location = new System.Drawing.Point(26, 13);
+            this.cbFileType.Name = "cbFileType";
+            this.cbFileType.Size = new System.Drawing.Size(284, 24);
+            this.cbFileType.TabIndex = 4;
+            this.cbFileType.SelectedIndexChanged += new System.EventHandler(this.cbFileType_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.provincesComboBox);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.cbFileType);
+            this.Controls.Add(this.dgvStudents);
+            this.Controls.Add(this.btUpdate);
+            this.Controls.Add(this.cbProvinces);
+            this.Controls.Add(this.btAdd);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Students";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox provincesComboBox;
+        private System.Windows.Forms.Button btAdd;
+        private System.Windows.Forms.ComboBox cbProvinces;
+        private System.Windows.Forms.Button btUpdate;
+        private System.Windows.Forms.DataGridView dgvStudents;
+        private System.Windows.Forms.ComboBox cbFileType;
     }
 }
 
