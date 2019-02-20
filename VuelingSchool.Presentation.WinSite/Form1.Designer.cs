@@ -62,6 +62,7 @@
             this.btUpdate.TabIndex = 2;
             this.btUpdate.Text = "UPDATE";
             this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
             // dgvStudents
             // 

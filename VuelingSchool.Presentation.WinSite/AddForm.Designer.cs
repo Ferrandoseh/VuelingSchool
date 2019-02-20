@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.btAddEvent = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbId = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.tbSurname = new System.Windows.Forms.TextBox();
+            this.tbBirthday = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,34 +48,35 @@
             this.btAddEvent.TabIndex = 0;
             this.btAddEvent.Text = "SEND EVENT";
             this.btAddEvent.UseVisualStyleBackColor = true;
+            this.btAddEvent.Click += new System.EventHandler(this.btAddEvent_Click);
             // 
-            // textBox1
+            // tbId
             // 
-            this.textBox1.Location = new System.Drawing.Point(30, 99);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(288, 22);
-            this.textBox1.TabIndex = 1;
+            this.tbId.Location = new System.Drawing.Point(30, 99);
+            this.tbId.Name = "tbId";
+            this.tbId.Size = new System.Drawing.Size(288, 22);
+            this.tbId.TabIndex = 1;
             // 
-            // textBox2
+            // tbName
             // 
-            this.textBox2.Location = new System.Drawing.Point(30, 175);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(288, 22);
-            this.textBox2.TabIndex = 2;
+            this.tbName.Location = new System.Drawing.Point(30, 175);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(288, 22);
+            this.tbName.TabIndex = 2;
             // 
-            // textBox3
+            // tbSurname
             // 
-            this.textBox3.Location = new System.Drawing.Point(30, 251);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(288, 22);
-            this.textBox3.TabIndex = 3;
+            this.tbSurname.Location = new System.Drawing.Point(30, 251);
+            this.tbSurname.Name = "tbSurname";
+            this.tbSurname.Size = new System.Drawing.Size(288, 22);
+            this.tbSurname.TabIndex = 3;
             // 
-            // textBox4
+            // tbBirthday
             // 
-            this.textBox4.Location = new System.Drawing.Point(30, 329);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(288, 22);
-            this.textBox4.TabIndex = 4;
+            this.tbBirthday.Location = new System.Drawing.Point(30, 329);
+            this.tbBirthday.Name = "tbBirthday";
+            this.tbBirthday.Size = new System.Drawing.Size(288, 22);
+            this.tbBirthday.TabIndex = 4;
             // 
             // label1
             // 
@@ -137,10 +138,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbBirthday);
+            this.Controls.Add(this.tbSurname);
+            this.Controls.Add(this.tbName);
+            this.Controls.Add(this.tbId);
             this.Controls.Add(this.btAddEvent);
             this.Name = "AddForm";
             this.Text = "AddForm";
@@ -152,10 +153,10 @@
         #endregion
 
         private System.Windows.Forms.Button btAddEvent;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbId;
+        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.TextBox tbSurname;
+        private System.Windows.Forms.TextBox tbBirthday;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

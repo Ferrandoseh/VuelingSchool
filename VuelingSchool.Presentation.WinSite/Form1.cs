@@ -28,6 +28,11 @@ namespace VuelingSchool.Presentation.WinSite
 
         }
 
+        public StudentRepository getActiveStudenRepository()
+        {
+            return sr;
+        }
+
         private void RefreshView()
         {
             List<Student> studentList = sr.GetAllStudents();
@@ -52,13 +57,18 @@ namespace VuelingSchool.Presentation.WinSite
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            Form addForm = new AddForm();
+            Form addForm = new AddForm(sr);
             addForm.ShowDialog(this);
         }
 
         private void cbFileType_SelectedIndexChanged(object sender, EventArgs e)
         {
             CreateRepository();
+            RefreshView();
+        }
+
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
             RefreshView();
         }
     }
