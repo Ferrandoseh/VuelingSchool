@@ -52,7 +52,8 @@ namespace VuelingSchool.Presentation.WinSite
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-
+            Form addForm = new AddForm();
+            addForm.ShowDialog(this);
         }
 
         private void cbFileType_SelectedIndexChanged(object sender, EventArgs e)
