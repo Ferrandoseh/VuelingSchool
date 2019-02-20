@@ -21,6 +21,7 @@ namespace VuelingSchool.Presentation.WinSite
         {
             InitializeComponent();
             LoadProvinces();
+            
 
             cbFileType.DataSource = fileTypes;
             CreateRepository();
@@ -57,8 +58,8 @@ namespace VuelingSchool.Presentation.WinSite
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            Form addForm = new AddForm(sr);
-            addForm.ShowDialog(this);
+            AddForm addForm = new AddForm(this);
+            addForm.Show(this);
         }
 
         private void cbFileType_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,6 +70,12 @@ namespace VuelingSchool.Presentation.WinSite
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
+            RefreshView();
+        }
+
+        public void AddStudent(Student s)
+        {
+            sr.AddNewStudent(s);
             RefreshView();
         }
     }

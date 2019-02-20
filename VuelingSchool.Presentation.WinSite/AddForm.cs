@@ -14,18 +14,22 @@ namespace VuelingSchool.Presentation.WinSite
 {
     public partial class AddForm : Form
     {
-        StudentRepository sr;
-        public AddForm(StudentRepository srForm1)
+        public event StudentAddedHandler OnStudentAdded;
+        Form1 f1;
+        public AddForm(Form1 form1)
         {
             InitializeComponent();
 
-            sr = srForm1;
+            f1 = form1;
+            OnStudentAdded += f1.AddStudent;
         }
-
+        
         private void btAddEvent_Click(object sender, EventArgs e)
         {
             Student s = new Student(tbId.Text, tbName.Text, tbSurname.Text, tbBirthday.Text);
-            sr.AddNewStudent(s);
+
+            if (OnStudentAdded != null)
+                OnStudentAdded(s);
         }
     }
 }
