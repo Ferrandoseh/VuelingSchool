@@ -2,5 +2,5 @@
 
 namespace VuelingSchool.Presentation.WinSite
 {
-    public delegate void StudentAddedHandler(Student s);
+    public delegate void StudentAddedHandler();
 }

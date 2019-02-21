@@ -52,8 +52,8 @@ namespace VuelingSchool.Presentation.WinSite
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            AddForm addForm = new AddForm();
-            addForm.StudentAddedEvent += this.OnStudentAdded;
+            AddForm addForm = new AddForm(sr);
+            addForm.StudentAddedEvent += this.RefreshView;
             addForm.Show(this);
         }
 
@@ -65,12 +65,6 @@ namespace VuelingSchool.Presentation.WinSite
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            RefreshView();
-        }
-
-        public void OnStudentAdded(Student s)
-        {
-            sr.AddNewStudent(s);
             RefreshView();
         }
     }
