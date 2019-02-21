@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VuelingSchool.Common.Library.Factory;
 using VuelingSchool.Common.Library.Models;
@@ -58,7 +52,8 @@ namespace VuelingSchool.Presentation.WinSite
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            AddForm addForm = new AddForm(this);
+            AddForm addForm = new AddForm();
+            addForm.StudentAddedEvent += this.OnStudentAdded;
             addForm.Show(this);
         }
 
@@ -73,7 +68,7 @@ namespace VuelingSchool.Presentation.WinSite
             RefreshView();
         }
 
-        public void AddStudent(Student s)
+        public void OnStudentAdded(Student s)
         {
             sr.AddNewStudent(s);
             RefreshView();
