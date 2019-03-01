@@ -14,6 +14,4 @@ RUN nuget restore ./VuelingSchool.sln
 
 RUN ./Build.ps1
 
-COPY ./VuelingSchool.DataAccess.Repository/bin/Debug/RepositoryConfiguration.xml .
-
 ENTRYPOINT ["./VuelingSchool.Presentation.Console/bin/Release/VuelingSchool.Presentation.Console.exe"]
